@@ -4,8 +4,8 @@ import { PrismaService } from './services';
 // const Services = Object.values(PrismaService);
 
 @Module({
-  imports: [],
-  providers: [PrismaService],
-  exports: [PrismaService],
+	imports: [],
+	providers: [PrismaService],
+	exports: [PrismaService],
 })
 export class DatabaseModule {}

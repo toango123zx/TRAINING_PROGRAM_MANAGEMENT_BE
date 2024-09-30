@@ -1,11 +1,16 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
-import { HeathCheckModule } from './modules/heathCheck/heathcCheck.module';
+import { HealthCheckModule } from './modules/healthCheck/healthCheck.module';
 import { DatabaseModule } from './modules/database/database.module';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
 
 @Module({
-  imports: [HeathCheckModule, DatabaseModule],
-  // controllers: [AppController],
-  // providers: [AppService],
+	imports: [HealthCheckModule, DatabaseModule],
+	// controllers: [AppController],
+	// providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+	configure(consumer: MiddlewareConsumer) {
+		consumer.apply(LoggerMiddleware).forRoutes('*');
+	}
+}

@@ -1,5 +1,3 @@
-import { PrismaService } from "./prisma.service";
+import { PrismaService } from './prisma.service';
 
-export {
-    PrismaService
-}
+export { PrismaService };

@@ -1,0 +1,12 @@
+model Subject {
+    id_subject  String    @id @default(uuid())
+    name        String
+    description String?
+    create_at   DateTime  @default(now())
+    update_at   DateTime  @updatedAt
+    delete_at   DateTime?
+    status      Int       @default(0)
+
+    classes      Class[]
+    infoSubjects Info_Subject[]
+}

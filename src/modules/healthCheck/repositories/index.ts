@@ -15,7 +15,7 @@ export class HealthCheckRepository {
 			return true;
 		} catch (error) {
 			console.log(
-				`🚀 ~ file: index.ts:16 ~ HealthCheckRepository ~ getConection ~ error:`,
+				'🚀 ~ file: index.ts:16 ~ HealthCheckRepository ~ getConection ~ error:',
 				error,
 			);
 			return false;

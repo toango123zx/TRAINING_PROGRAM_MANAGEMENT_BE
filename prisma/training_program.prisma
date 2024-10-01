@@ -1,0 +1,13 @@
+model Training_Program {
+    id_training_program String    @id @default(uuid())
+    name                String
+    description         String?
+    create_at           DateTime  @default(now())
+    update_at           DateTime  @updatedAt
+    delete_at           DateTime?
+    status              Int       @default(0)
+    school_year         Int
+    number_semester     Int
+
+    infoSubjects Info_Subject[]
+}

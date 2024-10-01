@@ -1,0 +1,13 @@
+model Info_Subject {
+    id_info_subject     String    @id @default(uuid())
+    id_subject          String
+    id_training_program String
+    create_at           DateTime  @default(now())
+    update_at           DateTime  @updatedAt
+    delete_at           DateTime?
+    status              Int       @default(0)
+    semester            Int         
+
+    subject         Subject          @relation(fields: [id_subject], references: [id_subject])
+    trainingProgram Training_Program @relation(fields: [id_training_program], references: [id_training_program])
+}

@@ -9,7 +9,7 @@ export class HealthCheckController {
 	constructor(private readonly queryBus: QueryBus) {}
 
 	@Get()
-	async heatCheck() {
+	async healthCheck() {
 		return this.queryBus.execute(new GetHealthCheckQuery());
 	}
 }

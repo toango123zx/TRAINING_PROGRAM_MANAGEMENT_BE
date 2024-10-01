@@ -1,0 +1,6 @@
+model Role {
+    id_role     String @id @default(uuid())
+    name        String @db.VarChar(100)
+    description String @db.VarChar(100)
+    users       User[]
+}

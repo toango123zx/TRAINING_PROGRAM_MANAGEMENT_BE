@@ -1,18 +1,37 @@
-model User {
-    id_user       String   @id @default(uuid())
-    username      String   @unique @db.VarChar(100)
-    password      String   @db.Char(128)
-    name          String   @db.VarChar(100)
-    email         String   @unique @db.VarChar(100)
-    gender        Boolean
-    date_of_birth DateTime @db.Date()
-    phone_number  String   @db.Char(10)
-    address       String   @db.Text
-    create_at     DateTime @default(now())
-    salt          String   @db.Char(32)
+enum User_Status {
+    activate
+    deactivate
+    inactive
+}
 
-    id_role    String
-    role       Role         @relation(fields: [id_role], references: [id_role])
-    gvRecords  GV?
+model User {
+    id_user       String      @id @default(uuid())
+    username      String      @unique @db.VarChar(100)
+    password      String      @db.Char(128)
+    name          String      @db.VarChar(100)
+    email         String      @unique @db.VarChar(100)
+    gender        Boolean
+    date_of_birth DateTime    @db.Date()
+    phone_number  String      @db.Char(10)
+    address       String      @db.Text
+    create_at     DateTime    @default(now())
+    salt          String      @db.Char(32)
+    id_role       String
+    role          Role        @relation(fields: [id_role], references: [id_role])
+    status        User_Status @default(activate)
+
+    Lecturer   Lecturer?
     info_class Info_Class[]
+}
+
+model Lecturer {
+    id_lecturer  String      @id @default(uuid())
+    id_user      String      @unique
+    user         User        @relation(fields: [id_user], references: [id_user])
+    description  String      @db.Text()
+    degree       String?
+    work_address String      @db.Text()
+    status       User_Status @default(activate)
+
+    classes Class[]
 }

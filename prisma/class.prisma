@@ -1,16 +1,35 @@
-model Class {
-    id_class         String    @id @default(uuid())
-    name             String
-    create_at        DateTime  @default(now())
-    update_at        DateTime  @updatedAt
-    delete_at        DateTime?
-    status           Int       @default(0)
-    quantity         Int       @default(40)
-    current_quantity Int       @default(0)
+enum Class_Status {
+    activate
+    cancel
+}
 
-    id_subject  String
-    subject     Subject      @relation(fields: [id_subject], references: [id_subject])
-    infoClasses Info_Class[]
-    id_GV       String
-    GV          GV           @relation(fields: [id_GV], references: [id_GV])
+enum Info_Class_Status {
+    accepted
+    waiting
+    rejected
+}
+
+model Class {
+    id_class         String       @id @default(uuid())
+    name             String
+    create_at        DateTime     @default(now())
+    update_at        DateTime     @updatedAt
+    delete_at        DateTime?    @db.Date()
+    quantity         Int          @default(0)
+    current_quantity Int          @default(0)
+    id_subject       String
+    subject          Subject      @relation(fields: [id_subject], references: [id_subject])
+    infoClasses      Info_Class[]
+    id_lecturer      String
+    lecturer         Lecturer     @relation(fields: [id_lecturer], references: [id_lecturer])
+    status           Class_Status @default(activate)
+}
+
+model Info_Class {
+    id_info_class String            @id @default(uuid())
+    id_user       String
+    user          User              @relation(fields: [id_user], references: [id_user])
+    id_class      String
+    class         Class             @relation(fields: [id_class], references: [id_class])
+    status        Info_Class_Status @default(accepted)
 }

@@ -1,12 +1,35 @@
+enum Subject_Status {
+    activate
+    cancel
+}
+
+enum Info_Subject_Status {
+    activate
+    cancel
+}
+
 model Subject {
-    id_subject  String    @id @default(uuid())
+    id_subject  String         @id @default(uuid())
     name        String
-    description String?
-    create_at   DateTime  @default(now())
-    update_at   DateTime  @updatedAt
-    delete_at   DateTime?
-    status      Int       @default(0)
+    description String         @db.Text()
+    create_at   DateTime       @default(now())
+    update_at   DateTime       @updatedAt
+    delete_at   DateTime       @db.Date()
+    status      Subject_Status @default(activate)
 
     classes      Class[]
     infoSubjects Info_Subject[]
+}
+
+model Info_Subject {
+    id_info_subject     String              @id @default(uuid())
+    id_training_program String
+    trainingProgram     Training_Program    @relation(fields: [id_training_program], references: [id_training_program])
+    id_subject          String
+    subject             Subject             @relation(fields: [id_subject], references: [id_subject])
+    create_at           DateTime            @default(now())
+    update_at           DateTime            @updatedAt
+    delete_at           DateTime            @db.Date()
+    status              Info_Subject_Status @default(activate)
+    semester            Int
 }

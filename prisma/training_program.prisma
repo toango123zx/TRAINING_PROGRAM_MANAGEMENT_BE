@@ -1,13 +1,18 @@
+enum Training_Program_Status {
+    activate
+    cancel
+}
+
 model Training_Program {
-    id_training_program String    @id @default(uuid())
+    id_training_program String                  @id @default(uuid())
     name                String
-    description         String?
-    create_at           DateTime  @default(now())
-    update_at           DateTime  @updatedAt
-    delete_at           DateTime?
-    status              Int       @default(0)
+    description         String                  @db.Text()
+    create_at           DateTime                @default(now())
+    update_at           DateTime                @updatedAt
+    delete_at           DateTime                @db.Date()
     school_year         Int
-    number_semester     Int
+    number_semester     Int                     @db.SmallInt()
+    status              Training_Program_Status @default(activate)
 
     infoSubjects Info_Subject[]
 }

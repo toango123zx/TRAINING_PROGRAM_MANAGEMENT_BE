@@ -13,3 +13,28 @@ datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
+
+generator nestjsDto {
+    provider                        = "prisma-generator-nestjs-dto"
+    //địa chỉ thư mục chứa file output
+    output                          = "../src/models"
+    //Chia folder theo table, trong đó bao gồm dto (create, update,...) và entity (đối tượng)
+    outputToNestJsResourceStructure = "true"
+    exportRelationModifierClasses   = "true"
+    reExport                        = "true"
+    generateFileTypes               = "all"
+    createDtoPrefix                 = "Create"
+    updateDtoPrefix                 = "Update"
+    dtoSuffix                       = "Dto"
+    entityPrefix                    = ""
+    entitySuffix                    = "Dto"
+    fileNamingStyle                 = "snake"
+    // cấu trúc lưu trong 1 folder của bảng, true: sẽ không chia theo 2 folder dto và entity
+    flatResourceStructure           = "false"
+    classValidation                 = "true"
+    noDependencies                  = "false"
+    outputType                      = "class"
+    prettier                        = "true"
+    requiredResponseApiProperty     = "true"
+    outputApiPropertyType           = "true"
+}

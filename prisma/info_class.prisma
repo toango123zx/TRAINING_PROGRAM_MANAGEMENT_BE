@@ -1,9 +1,0 @@
-model Info_Class {
-    id_info_class String @id @default(uuid())
-    id_user       String
-    id_class      String
-    status        Int    @default(0)
-
-    user  User  @relation(fields: [id_user], references: [id_user])
-    class Class @relation(fields: [id_class], references: [id_class])
-}

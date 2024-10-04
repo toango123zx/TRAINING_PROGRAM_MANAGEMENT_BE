@@ -1,9 +1,9 @@
 import { Subject_Status } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { ClassDto } from '../../class/entities/class.entity';
-import { InfoSubjectDto } from '../../info_subject/entities/info_subject.entity';
+import { ClassEntity } from '../../class/entities/class.entity';
+import { InfoSubjectEntity } from '../../info_subject/entities/info_subject.entity';
 
-export class SubjectDto {
+export class SubjectEntity {
 	@ApiProperty({
 		type: 'string',
 	})
@@ -36,15 +36,15 @@ export class SubjectDto {
 	})
 	status: Subject_Status;
 	@ApiProperty({
-		type: () => ClassDto,
+		type: () => ClassEntity,
 		isArray: true,
 		required: false,
 	})
-	classes?: ClassDto[];
+	classes?: ClassEntity[];
 	@ApiProperty({
-		type: () => InfoSubjectDto,
+		type: () => InfoSubjectEntity,
 		isArray: true,
 		required: false,
 	})
-	infoSubjects?: InfoSubjectDto[];
+	infoSubjects?: InfoSubjectEntity[];
 }

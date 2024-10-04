@@ -1,10 +1,10 @@
 import { Class_Status } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { SubjectDto } from '../../subject/entities/subject.entity';
-import { InfoClassDto } from '../../info_class/entities/info_class.entity';
-import { LecturerDto } from '../../lecturer/entities/lecturer.entity';
+import { SubjectEntity } from '../../subject/entities/subject.entity';
+import { InfoClassEntity } from '../../info_class/entities/info_class.entity';
+import { LecturerEntity } from '../../lecturer/entities/lecturer.entity';
 
-export class ClassDto {
+export class ClassEntity {
 	@ApiProperty({
 		type: 'string',
 	})
@@ -44,25 +44,25 @@ export class ClassDto {
 	})
 	id_subject: string;
 	@ApiProperty({
-		type: () => SubjectDto,
+		type: () => SubjectEntity,
 		required: false,
 	})
-	subject?: SubjectDto;
+	subject?: SubjectEntity;
 	@ApiProperty({
-		type: () => InfoClassDto,
+		type: () => InfoClassEntity,
 		isArray: true,
 		required: false,
 	})
-	infoClasses?: InfoClassDto[];
+	infoClasses?: InfoClassEntity[];
 	@ApiProperty({
 		type: 'string',
 	})
 	id_lecturer: string;
 	@ApiProperty({
-		type: () => LecturerDto,
+		type: () => LecturerEntity,
 		required: false,
 	})
-	lecturer?: LecturerDto;
+	lecturer?: LecturerEntity;
 	@ApiProperty({
 		enum: Class_Status,
 	})

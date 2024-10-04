@@ -1,8 +1,8 @@
 import { Training_Program_Status } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { InfoSubjectDto } from '../../info_subject/entities/info_subject.entity';
+import { InfoSubjectEntity } from '../../info_subject/entities/info_subject.entity';
 
-export class TrainingProgramDto {
+export class TrainingProgramEntity {
 	@ApiProperty({
 		type: 'string',
 	})
@@ -45,9 +45,9 @@ export class TrainingProgramDto {
 	})
 	status: Training_Program_Status;
 	@ApiProperty({
-		type: () => InfoSubjectDto,
+		type: () => InfoSubjectEntity,
 		isArray: true,
 		required: false,
 	})
-	infoSubjects?: InfoSubjectDto[];
+	infoSubjects?: InfoSubjectEntity[];
 }

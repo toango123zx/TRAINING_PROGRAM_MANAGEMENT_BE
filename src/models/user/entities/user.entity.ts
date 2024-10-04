@@ -1,10 +1,10 @@
 import { User_Status } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
-import { RoleDto } from '../../role/entities/role.entity';
-import { LecturerDto } from '../../lecturer/entities/lecturer.entity';
-import { InfoClassDto } from '../../info_class/entities/info_class.entity';
+import { RoleEntity } from '../../role/entities/role.entity';
+import { LecturerEntity } from '../../lecturer/entities/lecturer.entity';
+import { InfoClassEntity } from '../../info_class/entities/info_class.entity';
 
-export class UserDto {
+export class UserEntity {
 	@ApiProperty({
 		type: 'string',
 	})
@@ -56,24 +56,24 @@ export class UserDto {
 	})
 	id_role: string;
 	@ApiProperty({
-		type: () => RoleDto,
+		type: () => RoleEntity,
 		required: false,
 	})
-	role?: RoleDto;
+	role?: RoleEntity;
 	@ApiProperty({
 		enum: User_Status,
 	})
 	status: User_Status;
 	@ApiProperty({
-		type: () => LecturerDto,
+		type: () => LecturerEntity,
 		required: false,
 		nullable: true,
 	})
-	Lecturer?: LecturerDto | null;
+	Lecturer?: LecturerEntity | null;
 	@ApiProperty({
-		type: () => InfoClassDto,
+		type: () => InfoClassEntity,
 		isArray: true,
 		required: false,
 	})
-	info_class?: InfoClassDto[];
+	info_class?: InfoClassEntity[];
 }

@@ -27,7 +27,7 @@ generator nestjsDto {
     updateDtoPrefix                 = "Update"
     dtoSuffix                       = "Dto"
     entityPrefix                    = ""
-    entitySuffix                    = "Dto"
+    entitySuffix                    = "Entity"
     fileNamingStyle                 = "snake"
     // cấu trúc lưu trong 1 folder của bảng, true: sẽ không chia theo 2 folder dto và entity
     flatResourceStructure           = "false"

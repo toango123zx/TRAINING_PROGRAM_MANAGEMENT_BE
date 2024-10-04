@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { UserDto } from '../../user/entities/user.entity';
+import { UserEntity } from '../../user/entities/user.entity';
 
-export class RoleDto {
+export class RoleEntity {
 	@ApiProperty({
 		type: 'string',
 	})
@@ -15,9 +15,9 @@ export class RoleDto {
 	})
 	description: string;
 	@ApiProperty({
-		type: () => UserDto,
+		type: () => UserEntity,
 		isArray: true,
 		required: false,
 	})
-	users?: UserDto[];
+	users?: UserEntity[];
 }

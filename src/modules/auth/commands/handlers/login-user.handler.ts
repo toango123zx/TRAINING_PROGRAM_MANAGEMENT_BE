@@ -3,11 +3,15 @@ import { LoginUserCommand } from '../implements';
 import { NotFoundException } from '@nestjs/common';
 import { hash } from 'bcryptjs';
 import { AuthRepository } from '../../repositories/auth.repository';
-import { SafeUserDto } from '../../dto';
+import { JwtService } from '@nestjs/jwt';
+import { jwtConfig } from 'src/config';
 
 @CommandHandler(LoginUserCommand)
 export class LoginUserHandler implements ICommandHandler<LoginUserCommand> {
-	constructor(private readonly authRepository: AuthRepository) {}
+	constructor(
+		private readonly authRepository: AuthRepository,
+		private readonly jwtService: JwtService,
+	) {}
 
 	async execute(command: LoginUserCommand): Promise<any> {
 		const { loginUserDto } = command;
@@ -16,12 +20,19 @@ export class LoginUserHandler implements ICommandHandler<LoginUserCommand> {
 		const user = await this.authRepository.findUserByUsername(username);
 
 		if (!user) throw new NotFoundException();
-
 		const { salt } = user;
 		const hashedPassword = await hash(password, salt);
 
 		if (hashedPassword !== user.password.replaceAll(' ', ''))
 			return new NotFoundException();
-		return new SafeUserDto(user);
+		return {
+			access_token: this.jwtService.sign(
+				{
+					username: username,
+					sub: user.id_user,
+				},
+				{ secret: jwtConfig.secret },
+			),
+		};
 	}
 }

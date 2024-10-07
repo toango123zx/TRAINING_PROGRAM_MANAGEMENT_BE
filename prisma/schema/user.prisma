@@ -17,6 +17,8 @@ model User {
     create_at     DateTime    @default(now())
     salt          String      @db.Char(32)
     id_role       String
+    /// @DtoRelationCanConnectOnCreate
+    /// @DtoRelationCanConnectOnUpdate
     role          Role        @relation(fields: [id_role], references: [id_role])
     status        User_Status @default(activate)
 
@@ -27,6 +29,7 @@ model User {
 model Lecturer {
     id_lecturer  String      @id @default(uuid())
     id_user      String      @unique
+    /// @DtoRelationCanCreateOnCreate
     user         User        @relation(fields: [id_user], references: [id_user])
     description  String      @db.Text()
     degree       String?

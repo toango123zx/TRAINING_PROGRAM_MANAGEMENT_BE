@@ -1,5 +1,5 @@
-import { CreateRoleDto } from "src/models";
-import { PrismaService } from "src/modules/database/services";
+import { CreateRoleDto } from 'src/models';
+import { PrismaService } from 'src/modules/database/services';
 
 const prismaService = new PrismaService();
 
@@ -9,11 +9,11 @@ const roleData: CreateRoleDto[] = [
 		description: 'Role for Administrators',
 	},
 	{
-		name: 'Lecturer',
-		description: 'Role for Teachers',
+		name: 'LECTURER',
+		description: 'Role for Lecturer',
 	},
 	{
-		name: 'Student',
+		name: 'STUDENT',
 		description: 'Role for Students',
 	},
 ];
@@ -21,5 +21,5 @@ const roleData: CreateRoleDto[] = [
 export const roleSeedData = () => {
 	return prismaService.role.createMany({
 		data: roleData,
-	})
-}
+	});
+};

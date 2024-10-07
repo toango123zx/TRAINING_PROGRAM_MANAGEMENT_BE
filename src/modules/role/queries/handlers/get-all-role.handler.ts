@@ -1,13 +1,13 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetAllRoleService } from '../implements/get-all-role.implement';
 import { Role } from '@prisma/client';
-import { GetAllRoleQuery } from '../get-all-role.query';
+import { GetAllRoleQuery } from '../implements/get-all-role.query';
+import { RoleRepository } from '../../repositories/role.repository';
 
 @QueryHandler(GetAllRoleQuery)
 export class GetAllRoleHandler implements IQueryHandler<GetAllRoleQuery> {
-	constructor(private readonly getAllRoleService: GetAllRoleService) {}
+	constructor(private readonly roleRepository: RoleRepository) {}
 
 	async execute(): Promise<Role[] | null> {
-		return this.getAllRoleService.execute();
+		return this.roleRepository.getAll();
 	}
 }

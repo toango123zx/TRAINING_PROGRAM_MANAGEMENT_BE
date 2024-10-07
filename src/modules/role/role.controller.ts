@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
-import { GetAllRoleQuery } from './queries/get-all-role.query';
+import { GetAllRoleQuery } from './queries/implements/get-all-role.query';
 
 @ApiTags('Roles')
 @Controller('role')

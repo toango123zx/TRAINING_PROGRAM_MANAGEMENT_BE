@@ -1,6 +1,6 @@
-import { roleSeedData } from "./role.seed";
-import { userSeedData } from "./user.seed";
-
+/* eslint-disable no-console */
+import { roleSeedData } from './role.seed';
+import { userSeedData } from './user.seed';
 
 const seedData = async () => {
 	await roleSeedData();

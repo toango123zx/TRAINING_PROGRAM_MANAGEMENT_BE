@@ -9,4 +9,8 @@ export class RoleRepository {
 	async getAll(): Promise<Role[]> {
 		return await this.prisma.role.findMany();
 	}
+
+	async getById(id_role: string): Promise<Role> {
+		return await this.prisma.role.findFirst({ where: { id_role } });
+	}
 }

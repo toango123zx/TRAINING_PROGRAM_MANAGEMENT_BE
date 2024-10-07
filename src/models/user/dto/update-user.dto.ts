@@ -1,6 +1,26 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsOptional, IsString } from 'class-validator';
+import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
+import {
+	IsBoolean,
+	IsDateString,
+	IsNotEmpty,
+	IsOptional,
+	IsString,
+	ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
+import { ConnectRoleDto } from '../../role/dto/connect-role.dto';
 
+export class UpdateUserRoleRelationInputDto {
+	@ApiProperty({
+		type: ConnectRoleDto,
+	})
+	@IsNotEmpty()
+	@ValidateNested()
+	@Type(() => ConnectRoleDto)
+	connect: ConnectRoleDto;
+}
+
+@ApiExtraModels(ConnectRoleDto, UpdateUserRoleRelationInputDto)
 export class UpdateUserDto {
 	@ApiProperty({
 		type: 'string',
@@ -66,4 +86,12 @@ export class UpdateUserDto {
 	@IsOptional()
 	@IsString()
 	salt?: string;
+	@ApiProperty({
+		required: false,
+		type: UpdateUserRoleRelationInputDto,
+	})
+	@IsOptional()
+	@ValidateNested()
+	@Type(() => UpdateUserRoleRelationInputDto)
+	role?: UpdateUserRoleRelationInputDto;
 }

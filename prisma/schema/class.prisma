@@ -18,9 +18,13 @@ model Class {
     quantity         Int          @default(0)
     current_quantity Int          @default(0)
     id_subject       String
+    /// @DtoRelationCanConnectOnCreate
+    /// @DtoRelationCanConnectOnUpdate
     subject          Subject      @relation(fields: [id_subject], references: [id_subject])
     infoClasses      Info_Class[]
     id_lecturer      String
+    /// @DtoRelationCanConnectOnCreate
+    /// @DtoRelationCanConnectOnUpdate
     lecturer         Lecturer     @relation(fields: [id_lecturer], references: [id_lecturer])
     status           Class_Status @default(activate)
 }
@@ -28,8 +32,10 @@ model Class {
 model Info_Class {
     id_info_class String            @id @default(uuid())
     id_user       String
+    /// @DtoRelationCanConnectOnCreate
     user          User              @relation(fields: [id_user], references: [id_user])
     id_class      String
+    /// @DtoRelationCanConnectOnCreate
     class         Class             @relation(fields: [id_class], references: [id_class])
     status        Info_Class_Status @default(accepted)
 }

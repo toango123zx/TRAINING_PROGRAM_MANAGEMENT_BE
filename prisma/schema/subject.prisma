@@ -24,8 +24,10 @@ model Subject {
 model Info_Subject {
     id_info_subject     String              @id @default(uuid())
     id_training_program String
+    /// @DtoRelationCanConnectOnCreate
     trainingProgram     Training_Program    @relation(fields: [id_training_program], references: [id_training_program])
     id_subject          String
+    /// @DtoRelationCanConnectOnCreate
     subject             Subject             @relation(fields: [id_subject], references: [id_subject])
     create_at           DateTime            @default(now())
     update_at           DateTime            @updatedAt

@@ -71,5 +71,20 @@ export const userSeedData = async () => {
 		});
 	}
 
-	return prismaService.user.createMany({ data: userData });
+	await prismaService.user.createMany({ data: userData });
+
+	const lecturers = await prismaService.user.findMany({
+		where: { id_role: role_id.lecturer },
+	});
+
+	lecturers.forEach(async (lecturer) => {
+		await prismaService.lecturer.create({
+			data: {
+				id_user: lecturer.id_user,
+				description: '',
+				degree: 'ThS',
+				work_address: 'dhbk',
+			},
+		});
+	});
 };

@@ -3,11 +3,13 @@ import {
 	IsBoolean,
 	IsDateString,
 	IsNotEmpty,
+	IsOptional,
 	IsString,
 	ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ConnectRoleDto } from '../../role/dto/connect-role.dto';
+import { CreateLecturerDto } from '../../lecturer/dto/create-lecturer.dto';
 
 export class CreateUserRoleRelationInputDto {
 	@ApiProperty({
@@ -18,8 +20,22 @@ export class CreateUserRoleRelationInputDto {
 	@Type(() => ConnectRoleDto)
 	connect: ConnectRoleDto;
 }
+export class CreateUserLecturerRelationInputDto {
+	@ApiProperty({
+		type: CreateLecturerDto,
+	})
+	@IsNotEmpty()
+	@ValidateNested()
+	@Type(() => CreateLecturerDto)
+	create: CreateLecturerDto;
+}
 
-@ApiExtraModels(ConnectRoleDto, CreateUserRoleRelationInputDto)
+@ApiExtraModels(
+	ConnectRoleDto,
+	CreateUserRoleRelationInputDto,
+	CreateLecturerDto,
+	CreateUserLecturerRelationInputDto,
+)
 export class CreateUserDto {
 	@ApiProperty({
 		type: 'string',
@@ -83,4 +99,13 @@ export class CreateUserDto {
 	@ValidateNested()
 	@Type(() => CreateUserRoleRelationInputDto)
 	role: CreateUserRoleRelationInputDto;
+	@ApiProperty({
+		required: false,
+		nullable: true,
+		type: CreateUserLecturerRelationInputDto,
+	})
+	@IsOptional()
+	@ValidateNested()
+	@Type(() => CreateUserLecturerRelationInputDto)
+	Lecturer?: CreateUserLecturerRelationInputDto | null;
 }

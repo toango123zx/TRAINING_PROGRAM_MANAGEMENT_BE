@@ -13,5 +13,5 @@ export const Modules = [
 	RoleModule,
 	UserModule,
 	LecturerModule,
-	TrainingProgramModule
+	TrainingProgramModule,
 ];

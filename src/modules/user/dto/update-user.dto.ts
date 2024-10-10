@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsDateString, IsOptional, IsString } from 'class-validator';
+import {
+	IsBoolean,
+	IsDateString,
+	IsObject,
+	IsOptional,
+	IsString,
+} from 'class-validator';
+import { UpdateLecturerDto } from 'src/models';
 
 export class UpdateUserDto {
 	@ApiProperty({
@@ -45,4 +52,11 @@ export class UpdateUserDto {
 	@IsOptional()
 	@IsString()
 	address?: string;
+	@ApiProperty({
+		type: UpdateLecturerDto,
+		required: false,
+	})
+	@IsOptional()
+	@IsObject()
+	lecturer: UpdateLecturerDto;
 }

@@ -22,18 +22,19 @@ export class TrainingProgramDto {
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		nullable: true,
 	})
-	update_at: Date;
+	update_at: Date | null;
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		nullable: true,
 	})
-	delete_at: Date;
+	delete_at: Date | null;
 	@ApiProperty({
-		type: 'integer',
-		format: 'int32',
+		type: 'string',
 	})
-	school_year: number;
+	school_year: string;
 	@ApiProperty({
 		type: 'integer',
 		format: 'int32',

@@ -8,9 +8,9 @@ model Training_Program {
     name                String
     description         String                  @db.Text()
     create_at           DateTime                @default(now())
-    update_at           DateTime                @updatedAt
-    delete_at           DateTime                @db.Date()
-    school_year         Int
+    update_at           DateTime?               @updatedAt
+    delete_at           DateTime?               @db.Date()
+    school_year         String                  @db.Char(9)
     number_semester     Int                     @db.SmallInt()
     status              Training_Program_Status @default(activate)
 

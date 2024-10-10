@@ -20,18 +20,18 @@ export class UpdateTrainingProgramDto {
 		type: 'string',
 		format: 'date-time',
 		required: false,
+		nullable: true,
 	})
 	@IsOptional()
 	@IsDateString()
-	delete_at?: Date;
+	delete_at?: Date | null;
 	@ApiProperty({
-		type: 'integer',
-		format: 'int32',
+		type: 'string',
 		required: false,
 	})
 	@IsOptional()
-	@IsInt()
-	school_year?: number;
+	@IsString()
+	school_year?: string;
 	@ApiProperty({
 		type: 'integer',
 		format: 'int32',

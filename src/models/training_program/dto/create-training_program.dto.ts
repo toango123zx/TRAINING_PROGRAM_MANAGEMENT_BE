@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsInt, IsNotEmpty, IsString } from 'class-validator';
+import {
+	IsDateString,
+	IsInt,
+	IsNotEmpty,
+	IsOptional,
+	IsString,
+} from 'class-validator';
 
 export class CreateTrainingProgramDto {
 	@ApiProperty({
@@ -17,17 +23,18 @@ export class CreateTrainingProgramDto {
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		required: false,
+		nullable: true,
 	})
-	@IsNotEmpty()
+	@IsOptional()
 	@IsDateString()
-	delete_at: Date;
+	delete_at?: Date | null;
 	@ApiProperty({
-		type: 'integer',
-		format: 'int32',
+		type: 'string',
 	})
 	@IsNotEmpty()
-	@IsInt()
-	school_year: number;
+	@IsString()
+	school_year: string;
 	@ApiProperty({
 		type: 'integer',
 		format: 'int32',

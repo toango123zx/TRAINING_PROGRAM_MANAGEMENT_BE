@@ -1,8 +1,20 @@
-import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	Param,
+	Patch,
+	Post,
+	UseGuards,
+} from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { CreateTrainingProgramDto, UpdateTrainingProgramDto } from 'src/models';
+import { AuthGuard, RoleGuard } from 'src/shared/guards';
+import { Authorize } from 'src/common/decorators';
+import { Role } from 'src/common/enums';
 
 import {
 	GetTrainingProgramQuery,
@@ -10,11 +22,9 @@ import {
 } from './queries/implements';
 import {
 	CreateTrainingProgramCommand,
+	DeleteTrainingProgramCommand,
 	UpdateTrainingProgramCommand,
 } from './commands/implements';
-import { AuthGuard, RoleGuard } from 'src/shared/guards';
-import { Authorize } from 'src/common/decorators';
-import { Role } from 'src/common/enums';
 
 @ApiTags('Training Program')
 @Controller('training-program')
@@ -57,5 +67,13 @@ export class TrainingProgramController {
 		return this.commandBus.execute(
 			new UpdateTrainingProgramCommand(id, trainingProgramData),
 		);
+	}
+
+	@Delete(':id')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	async DeleteTrainingProgram(@Param('id') id: string): Promise<CommandBus> {
+		return this.commandBus.execute(new DeleteTrainingProgramCommand(id));
 	}
 }

@@ -1,1 +1,1 @@
-export * from "./UpdateSubClassRelationInput.dto"
+export * from './UpdateSubClassRelationInput.dto';

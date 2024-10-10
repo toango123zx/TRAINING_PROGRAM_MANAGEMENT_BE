@@ -25,7 +25,7 @@ export class TrainingProgramRepository {
 			return await this.prismaService.training_Program.findUnique({
 				where: {
 					id_training_program: trainingProgramId,
-					status: "activate"
+					status: 'activate',
 				},
 			});
 		} catch (error) {
@@ -53,7 +53,7 @@ export class TrainingProgramRepository {
 			return await this.prismaService.training_Program.update({
 				where: {
 					id_training_program: trainingProgramId,
-					status: "activate"
+					status: 'activate',
 				},
 				data: trainingProgramData,
 			});
@@ -67,12 +67,12 @@ export class TrainingProgramRepository {
 			return await this.prismaService.training_Program.update({
 				where: {
 					id_training_program: id,
-					status: "activate"
+					status: 'activate',
 				},
 				data: {
 					delete_at: new Date(),
 					status: 'cancel',
-				}
+				},
 			});
 		} catch (error) {
 			throw error;

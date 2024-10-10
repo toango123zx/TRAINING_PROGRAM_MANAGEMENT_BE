@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Lecturer } from '@prisma/client';
-import { CreateLecturerDto, UpdateLecturerDto } from 'src/models';
+import { UpdateLecturerDto } from 'src/models';
 import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
@@ -15,11 +15,10 @@ export class LecturerRepository {
 		return await this.prisma.lecturer.findFirst({ where: { id_user: id } });
 	}
 
-	// async create(data: CreateLecturerDto): Promise<Lecturer> {
-	// 	return await this.prisma.lecturer.create({ data });
-	// }
-
-	// async update(data: UpdateLecturerDto): Promise<any> {
-	// 	return await this.prisma.lecturer.update({ data });
-	// }
+	async updateByUserId(
+		id_user: string,
+		data: UpdateLecturerDto,
+	): Promise<Lecturer> {
+		return await this.prisma.lecturer.update({ where: { id_user }, data });
+	}
 }

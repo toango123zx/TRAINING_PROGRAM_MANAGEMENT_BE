@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 
-import { CreateTrainingProgramDto, TrainingProgramEntity } from 'src/models';
+import {
+	CreateTrainingProgramDto,
+	TrainingProgramEntity,
+	UpdateTrainingProgramDto,
+} from 'src/models';
 import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
@@ -21,6 +25,7 @@ export class TrainingProgramRepository {
 			return await this.prismaService.training_Program.findUnique({
 				where: {
 					id_training_program: trainingProgramId,
+					status: 'activate',
 				},
 			});
 		} catch (error) {
@@ -28,11 +33,28 @@ export class TrainingProgramRepository {
 		}
 	}
 
-    async createTrainingProgram(
+	async createTrainingProgram(
 		trainingProgramData: CreateTrainingProgramDto,
 	): Promise<TrainingProgramEntity> {
 		try {
 			return await this.prismaService.training_Program.create({
+				data: trainingProgramData,
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async updateTrainingProgram(
+		trainingProgramId: string,
+		trainingProgramData: UpdateTrainingProgramDto,
+	): Promise<TrainingProgramEntity | null> {
+		try {
+			return await this.prismaService.training_Program.update({
+				where: {
+					id_training_program: trainingProgramId,
+					status: 'activate',
+				},
 				data: trainingProgramData,
 			});
 		} catch (error) {

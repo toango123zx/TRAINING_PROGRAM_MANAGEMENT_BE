@@ -1,14 +1,17 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-import { CreateTrainingProgramDto } from 'src/models';
+import { CreateTrainingProgramDto, UpdateTrainingProgramDto } from 'src/models';
 
 import {
 	GetTrainingProgramQuery,
 	GetTrainingProgramByIdQuery,
 } from './queries/implements';
-import { CreateTrainingProgramCommand } from './commands/implements';
+import {
+	CreateTrainingProgramCommand,
+	UpdateTrainingProgramCommand,
+} from './commands/implements';
 import { AuthGuard, RoleGuard } from 'src/shared/guards';
 import { Authorize } from 'src/common/decorators';
 import { Role } from 'src/common/enums';
@@ -36,10 +39,23 @@ export class TrainingProgramController {
 	@UseGuards(AuthGuard, RoleGuard)
 	@Authorize(Role.Admin)
 	async createTrainingProgram(
-		@Body() trainingProgram: CreateTrainingProgramDto,
+		@Body() trainingProgramData: CreateTrainingProgramDto,
 	): Promise<CommandBus> {
 		return this.commandBus.execute(
-			new CreateTrainingProgramCommand(trainingProgram),
+			new CreateTrainingProgramCommand(trainingProgramData),
+		);
+	}
+
+	@Patch(':id')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	async updateTrainingProgram(
+		@Param('id') id: string,
+		@Body() trainingProgramData: UpdateTrainingProgramDto,
+	): Promise<CommandBus> {
+		return this.commandBus.execute(
+			new UpdateTrainingProgramCommand(id, trainingProgramData),
 		);
 	}
 }

@@ -8,10 +8,16 @@ model Training_Program {
     name                String
     description         String                  @db.Text()
     create_at           DateTime                @default(now())
+    /// @DtoCreateHidden
+    /// @DtoUpdateHidden
     update_at           DateTime?               @updatedAt
+    ///@DtoCreateHidden
+    /// @DtoUpdateHidden
     delete_at           DateTime?               @db.Date()
     school_year         String                  @db.Char(9)
     number_semester     Int                     @db.SmallInt()
+    /// @DtoCreateHidden
+    /// @DtoUpdateHidden
     status              Training_Program_Status @default(activate)
 
     infoSubjects Info_Subject[]

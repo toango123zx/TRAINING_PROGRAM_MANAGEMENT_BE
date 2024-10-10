@@ -27,4 +27,16 @@ export class TrainingProgramRepository {
 			throw error;
 		}
 	}
+
+    async createTrainingProgram(
+		trainingProgramData: CreateTrainingProgramDto,
+	): Promise<TrainingProgramEntity> {
+		try {
+			return await this.prismaService.training_Program.create({
+				data: trainingProgramData,
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
 }

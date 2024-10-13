@@ -25,7 +25,7 @@ export class GetSubjectsByNameHandler
 				skip,
 				query.pagination.limit,
 			);
-			const totalPage = Math.floor(totalRecords / query.pagination.limit);
+			const totalPage = Math.ceil(totalRecords / query.pagination.limit);
 			if (!subjects) {
 				return new NotFoundException();
 			}

@@ -21,7 +21,7 @@ export class GetSubjectsHandler implements IQueryHandler<GetSubjectsQuery> {
 				skip,
 				query.pagination.limit,
 			);
-			const totalPage = Math.floor(totalRecords / query.pagination.limit);
+			const totalPage = Math.ceil(totalRecords / query.pagination.limit);
 			return { data: subjects, totalPage };
 		} catch (error) {
 			return new InternalServerErrorException();

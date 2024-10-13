@@ -11,7 +11,7 @@ model Training_Program {
     /// @DtoCreateHidden
     /// @DtoUpdateHidden
     update_at           DateTime?               @updatedAt
-    ///@DtoCreateHidden
+    /// @DtoCreateHidden
     /// @DtoUpdateHidden
     delete_at           DateTime?               @db.Date()
     school_year         String                  @db.Char(9)

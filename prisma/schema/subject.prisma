@@ -13,8 +13,12 @@ model Subject {
     name        String
     description String         @db.Text()
     create_at   DateTime       @default(now())
-    update_at   DateTime       @updatedAt
-    delete_at   DateTime       @db.Date()
+    /// @DtoCreateHidden
+    /// @DtoUpdateHidden
+    update_at   DateTime?      @updatedAt
+    /// @DtoCreateHidden
+    /// @DtoUpdateHidden
+    delete_at   DateTime?      @db.Date()
     status      Subject_Status @default(activate)
 
     classes      Class[]

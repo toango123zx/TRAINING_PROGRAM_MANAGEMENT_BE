@@ -15,7 +15,7 @@ model Class {
     create_at        DateTime     @default(now())
     update_at        DateTime     @updatedAt
     delete_at        DateTime?    @db.Date()
-    quantity         Int          @default(0)
+    quantity         Int
     current_quantity Int          @default(0)
     id_subject       String
     /// @DtoRelationCanConnectOnCreate

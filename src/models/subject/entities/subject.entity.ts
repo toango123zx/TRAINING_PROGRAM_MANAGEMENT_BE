@@ -24,13 +24,15 @@ export class SubjectEntity {
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		nullable: true,
 	})
-	update_at: Date;
+	update_at: Date | null;
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		nullable: true,
 	})
-	delete_at: Date;
+	delete_at: Date | null;
 	@ApiProperty({
 		enum: Subject_Status,
 	})

@@ -1,6 +1,7 @@
 import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
 import {
 	IsDateString,
+	IsInt,
 	IsNotEmpty,
 	IsOptional,
 	IsString,
@@ -52,6 +53,14 @@ export class UpdateClassDto {
 	@IsOptional()
 	@IsDateString()
 	delete_at?: Date | null;
+	@ApiProperty({
+		type: 'integer',
+		format: 'int32',
+		required: false,
+	})
+	@IsOptional()
+	@IsInt()
+	quantity?: number;
 	@ApiProperty({
 		required: false,
 		type: UpdateClassSubjectRelationInputDto,

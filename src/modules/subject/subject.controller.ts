@@ -1,19 +1,23 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
+
+import { PaginationDto } from 'src/common/dtos';
+import { CreateSubjectDto } from 'src/models';
 
 import {
 	GetSubjectByIdQuery,
 	GetSubjectsQuery,
 	GetSubjectsByNameQuery,
 } from './queries/implements';
-import { PaginationDto } from 'src/common/dtos/pagination.dto';
+import { CreateSubjectCommand } from './commands/implements';
 
 @ApiTags('Subject')
 @Controller('subject')
 export class SubjectController {
 	constructor(
 		private readonly queryBus: QueryBus,
+		private readonly commandBus: CommandBus,
 	) {}
 
 	@Get()
@@ -32,5 +36,12 @@ export class SubjectController {
 	@Get(':id')
 	async findSubjectById(@Param('id') id: string): Promise<QueryBus> {
 		return this.queryBus.execute(new GetSubjectByIdQuery(id));
+	}
+
+	@Post()
+	async createSubject(
+		@Body() createSubjectDto: CreateSubjectDto,
+	): Promise<CommandBus> {
+		return this.commandBus.execute(new CreateSubjectCommand(createSubjectDto));
 	}
 }

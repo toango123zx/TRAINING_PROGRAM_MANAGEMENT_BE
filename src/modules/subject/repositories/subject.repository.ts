@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { SubjectEntity } from 'src/models';
+import { CreateSubjectDto, SubjectEntity } from 'src/models';
 import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
@@ -68,6 +68,16 @@ export class SubjectRepository {
 				}),
 			]);
 			return [subjects, totalRecords];
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async createSubject(subject: CreateSubjectDto): Promise<SubjectEntity> {
+		try {
+			return await this.prismaService.subject.create({
+				data: subject,
+			});
 		} catch (error) {
 			throw error;
 		}

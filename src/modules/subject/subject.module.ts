@@ -5,13 +5,14 @@ import { DatabaseModule } from '../database/database.module';
 
 import { SubjectController } from './subject.controller';
 
-import { SubjectRepository } from './repositories/subject.repository';
 import { QueryHandlers } from './queries/handlers';
+import { CommandHandlers } from './commands/handlers';
+import { SubjectRepository } from './repositories/subject.repository';
 
 @Module({
 	imports: [CqrsModule, DatabaseModule],
 	controllers: [SubjectController],
-	providers: [...QueryHandlers, SubjectRepository],
+	providers: [...QueryHandlers, ...CommandHandlers, SubjectRepository],
 	exports: [],
 })
 export class SubjectModule {}

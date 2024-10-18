@@ -13,7 +13,7 @@ export const trainingProgramSeedData = async () => {
 			name: `Training Program ${i}`,
 			description: `Description ${i}`,
 			number_semester: i,
-			school_year: `2021-2022`,
+			school_year: '2021-2022',
 		});
 	}
 

@@ -1,13 +1,12 @@
 import { Body, Controller, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
-import { CreateUserDto } from '../../models/user/dto';
 import { CreateUserCommand } from './commands/implements/create-user.command';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard, RoleGuard } from '../../shared/guards';
 import { Authorize } from '../../common/decorators';
 import { Role } from '../../common/enums';
 import { UpdateUserCommand } from './commands/implements';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateUserDto, CreateUserDto } from './dto';
 
 @ApiTags('Users')
 @Controller('user')

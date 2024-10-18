@@ -21,4 +21,8 @@ export class LecturerRepository {
 	): Promise<Lecturer> {
 		return await this.prisma.lecturer.update({ where: { id_user }, data });
 	}
+
+	async createLecturer(data: any): Promise<Lecturer> {
+		return await this.prisma.lecturer.create({ data });
+	}
 }

@@ -5,7 +5,10 @@ import {
 	TrainingProgramEntity,
 	UpdateTrainingProgramDto,
 } from 'src/models';
-import { PrismaService } from 'src/modules/database/services';
+import {
+	PrismaClientKnownRequestError,
+	PrismaService,
+} from 'src/modules/database/services';
 
 @Injectable()
 export class TrainingProgramRepository {
@@ -76,6 +79,56 @@ export class TrainingProgramRepository {
 			});
 		} catch (error) {
 			throw error;
+		}
+	}
+
+	async assignSubjectInTrainingProgram(
+		trainingProgramId: string,
+		subjectId: string,
+		semester: number,
+	): Promise<TrainingProgramEntity> {
+		try {
+			return await this.prismaService.training_Program.update({
+				where: {
+					id_training_program: trainingProgramId,
+					status: 'activate',
+					infoSubjects: {
+						none: {
+							subject: {
+								id_subject: subjectId,
+								status: 'activate',
+							},
+							status: 'activate',
+						},
+					},
+				},
+				data: {
+					infoSubjects: {
+						create: [
+							{
+								subject: {
+									connect: {
+										id_subject: subjectId,
+										status: 'activate',
+									},
+								},
+								semester: semester,
+							},
+						],
+					},
+				},
+				include: {
+					infoSubjects: {
+						include: {
+							subject: true,
+						},
+					},
+				},
+			});
+		} catch (error) {
+			if (error instanceof PrismaClientKnownRequestError) {
+				throw error;
+			}
 		}
 	}
 }

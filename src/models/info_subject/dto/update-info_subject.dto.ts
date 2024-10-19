@@ -6,10 +6,11 @@ export class UpdateInfoSubjectDto {
 		type: 'string',
 		format: 'date-time',
 		required: false,
+		nullable: true,
 	})
 	@IsOptional()
 	@IsDateString()
-	delete_at?: Date;
+	delete_at?: Date | null;
 	@ApiProperty({
 		type: 'integer',
 		format: 'int32',

@@ -20,5 +20,6 @@ model Training_Program {
     /// @DtoUpdateHidden
     status              Training_Program_Status @default(activate)
 
+    /// @DtoRelationCanCreateOnUpdate
     infoSubjects Info_Subject[]
 }

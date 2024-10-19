@@ -39,8 +39,9 @@ export class InfoSubjectEntity {
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		nullable: true,
 	})
-	delete_at: Date;
+	delete_at: Date | null;
 	@ApiProperty({
 		enum: Info_Subject_Status,
 	})

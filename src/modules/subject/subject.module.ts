@@ -13,6 +13,6 @@ import { SubjectRepository } from './repositories/subject.repository';
 	imports: [CqrsModule, DatabaseModule],
 	controllers: [SubjectController],
 	providers: [...QueryHandlers, ...CommandHandlers, SubjectRepository],
-	exports: [],
+	exports: [SubjectRepository],
 })
 export class SubjectModule {}

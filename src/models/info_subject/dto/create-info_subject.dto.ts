@@ -1,5 +1,11 @@
 import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsInt, IsNotEmpty, ValidateNested } from 'class-validator';
+import {
+	IsDateString,
+	IsInt,
+	IsNotEmpty,
+	IsOptional,
+	ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { ConnectTrainingProgramDto } from '../../training_program/dto/connect-training_program.dto';
 import { ConnectSubjectDto } from '../../subject/dto/connect-subject.dto';
@@ -47,10 +53,12 @@ export class CreateInfoSubjectDto {
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
+		required: false,
+		nullable: true,
 	})
-	@IsNotEmpty()
+	@IsOptional()
 	@IsDateString()
-	delete_at: Date;
+	delete_at?: Date | null;
 	@ApiProperty({
 		type: 'integer',
 		format: 'int32',

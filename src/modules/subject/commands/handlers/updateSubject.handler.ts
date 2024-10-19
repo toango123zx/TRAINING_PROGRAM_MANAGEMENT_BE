@@ -1,5 +1,5 @@
 import { HttpException } from '@nestjs/common';
-import { ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 import { HttpResponseBodySuccessDto } from 'src/common/dtos';
 import { InternalServerErrorException, NotFoundException } from 'src/exceptions';
@@ -8,6 +8,7 @@ import { SubjectEntity } from 'src/models';
 import { UpdateSubjectCommand } from '../implements';
 import { SubjectRepository } from '../../repositories/subject.repository';
 
+@CommandHandler(UpdateSubjectCommand)
 export class UpdateSubjectHandler implements ICommandHandler<UpdateSubjectCommand> {
 	constructor(public readonly subjectRepository: SubjectRepository) {}
 	async execute(

@@ -19,6 +19,9 @@ export class SubjectRepository {
 					},
 					skip: skip,
 					take: take,
+					orderBy: {
+						create_at: 'desc',
+					},
 				}),
 				this.prismaService.subject.count({
 					where: {
@@ -59,6 +62,9 @@ export class SubjectRepository {
 					},
 					skip: skip,
 					take: take,
+					orderBy: {
+						create_at: 'desc',
+					},
 				}),
 				this.prismaService.subject.count({
 					where: {
@@ -93,6 +99,21 @@ export class SubjectRepository {
 					id_subject: id,
 				},
 				data: subject,
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async deleteSubject(id: string): Promise<SubjectEntity> {
+		try {
+			return await this.prismaService.subject.update({
+				where: {
+					id_subject: id,
+				},
+				data: {
+					status: 'cancel',
+				},
 			});
 		} catch (error) {
 			throw error;

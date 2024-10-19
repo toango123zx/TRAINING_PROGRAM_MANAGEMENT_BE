@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	Param,
+	Patch,
+	Post,
+	Query,
+} from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -10,7 +19,11 @@ import {
 	GetSubjectsQuery,
 	GetSubjectsByNameQuery,
 } from './queries/implements';
-import { CreateSubjectCommand, UpdateSubjectCommand } from './commands/implements';
+import {
+	CreateSubjectCommand,
+	DeleteSubjectCommand,
+	UpdateSubjectCommand,
+} from './commands/implements';
 
 @ApiTags('Subject')
 @Controller('subject')
@@ -51,5 +64,10 @@ export class SubjectController {
 		@Body() subjectData: UpdateSubjectDto,
 	): Promise<CommandBus> {
 		return this.commandBus.execute(new UpdateSubjectCommand(id, subjectData));
+	}
+
+	@Delete(':id')
+	async deleteSubject(@Param('id') id: string): Promise<CommandBus> {
+		return this.commandBus.execute(new DeleteSubjectCommand(id));
 	}
 }

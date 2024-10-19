@@ -1,16 +1,16 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiTags } from '@nestjs/swagger';
 
 import { PaginationDto } from 'src/common/dtos';
-import { CreateSubjectDto } from 'src/models';
+import { CreateSubjectDto, UpdateSubjectDto } from 'src/models';
 
 import {
 	GetSubjectByIdQuery,
 	GetSubjectsQuery,
 	GetSubjectsByNameQuery,
 } from './queries/implements';
-import { CreateSubjectCommand } from './commands/implements';
+import { CreateSubjectCommand, UpdateSubjectCommand } from './commands/implements';
 
 @ApiTags('Subject')
 @Controller('subject')
@@ -43,5 +43,13 @@ export class SubjectController {
 		@Body() createSubjectDto: CreateSubjectDto,
 	): Promise<CommandBus> {
 		return this.commandBus.execute(new CreateSubjectCommand(createSubjectDto));
+	}
+
+	@Patch(':id')
+	async updateSubject(
+		@Param('id') id: string,
+		@Body() subjectData: UpdateSubjectDto,
+	): Promise<CommandBus> {
+		return this.commandBus.execute(new UpdateSubjectCommand(id, subjectData));
 	}
 }

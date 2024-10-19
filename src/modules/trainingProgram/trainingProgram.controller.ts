@@ -6,6 +6,7 @@ import {
 	Param,
 	Patch,
 	Post,
+	Query,
 	UseGuards,
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
@@ -21,6 +22,7 @@ import {
 	GetTrainingProgramByIdQuery,
 } from './queries/implements';
 import {
+	AssginSubjectInTrainingProgramCommand,
 	CreateTrainingProgramCommand,
 	DeleteTrainingProgramCommand,
 	UpdateTrainingProgramCommand,
@@ -75,5 +77,23 @@ export class TrainingProgramController {
 	@Authorize(Role.Admin)
 	async DeleteTrainingProgram(@Param('id') id: string): Promise<CommandBus> {
 		return this.commandBus.execute(new DeleteTrainingProgramCommand(id));
+	}
+
+	@Post(':trainingProgramId/assign-subject/:subjectId')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	async assignSubjectInTrainingProgram(
+		@Param('trainingProgramId') trainingProgramId: string,
+		@Param('subjectId') subjectId: string,
+		@Query('semester') semester: number,
+	): Promise<CommandBus> {
+		return this.commandBus.execute(
+			new AssginSubjectInTrainingProgramCommand(
+				trainingProgramId,
+				subjectId,
+				semester,
+			),
+		);
 	}
 }

@@ -1,6 +1,31 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsOptional, IsString } from 'class-validator';
+import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
+import {
+	IsArray,
+	IsInt,
+	IsNotEmpty,
+	IsOptional,
+	IsString,
+	ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
+import { CreateInfoSubjectDto } from '../../info_subject/dto/create-info_subject.dto';
 
+export class UpdateTrainingProgramInfoSubjectsRelationInputDto {
+	@ApiProperty({
+		type: CreateInfoSubjectDto,
+		isArray: true,
+	})
+	@IsNotEmpty()
+	@IsArray()
+	@ValidateNested({ each: true })
+	@Type(() => CreateInfoSubjectDto)
+	create: CreateInfoSubjectDto[];
+}
+
+@ApiExtraModels(
+	CreateInfoSubjectDto,
+	UpdateTrainingProgramInfoSubjectsRelationInputDto,
+)
 export class UpdateTrainingProgramDto {
 	@ApiProperty({
 		type: 'string',
@@ -31,4 +56,12 @@ export class UpdateTrainingProgramDto {
 	@IsOptional()
 	@IsInt()
 	number_semester?: number;
+	@ApiProperty({
+		required: false,
+		type: UpdateTrainingProgramInfoSubjectsRelationInputDto,
+	})
+	@IsOptional()
+	@ValidateNested()
+	@Type(() => UpdateTrainingProgramInfoSubjectsRelationInputDto)
+	infoSubjects?: UpdateTrainingProgramInfoSubjectsRelationInputDto;
 }

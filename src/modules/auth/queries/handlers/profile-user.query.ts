@@ -2,9 +2,9 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { ProfileUserQuery } from '../implements';
 import { InternalServerErrorException } from '@nestjs/common';
 import { AuthRepository } from '../../repositories/auth.repository';
-import { SafeUserDto } from '../../dto';
 import { Role } from '../../../../common/enums';
 import { LecturerRepository } from 'src/modules/lecturer/repositories/lecturer.repository';
+import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 
 @QueryHandler(ProfileUserQuery)
 export class ProfileUserHandler implements IQueryHandler<ProfileUserQuery> {

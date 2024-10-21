@@ -12,6 +12,7 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+import { PaginationDto } from 'src/common/dtos';
 import { CreateTrainingProgramDto, UpdateTrainingProgramDto } from 'src/models';
 import { AuthGuard, RoleGuard } from 'src/shared/guards';
 import { Authorize } from 'src/common/decorators';
@@ -38,8 +39,8 @@ export class TrainingProgramController {
 	) {}
 
 	@Get()
-	async findAll(): Promise<QueryBus> {
-		return this.queryBus.execute(new GetTrainingProgramQuery());
+	async findAll(@Query() pagination: PaginationDto): Promise<QueryBus> {
+		return this.queryBus.execute(new GetTrainingProgramQuery(pagination));
 	}
 
 	@Get(':id')

@@ -2,10 +2,7 @@ import { HttpException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 import { HttpResponseBodySuccessDto } from 'src/common/dtos';
-import {
-	InternalServerErrorException,
-	NotFoundException,
-} from 'src/exceptions';
+import { InternalServerErrorException, NotFoundException } from 'src/exceptions';
 import { TrainingProgramEntity } from 'src/models';
 
 import { PrismaClientKnownRequestError } from 'src/modules/database/services';

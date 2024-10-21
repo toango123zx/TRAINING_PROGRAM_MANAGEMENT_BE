@@ -1,4 +1,3 @@
-export * from './updateSubClassRelationInput.dto';
+export * from './UpdateSubClassRelationInput.dto';
 export * from './pagination.dto';
-export * from './updateSubClassRelationInput.dto';
 export * from './httpResponseBodySuccess.dto';

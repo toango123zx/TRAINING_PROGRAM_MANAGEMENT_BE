@@ -89,6 +89,24 @@ export class TrainingProgramRepository {
 	): Promise<TrainingProgramEntity> {
 		try {
 			return await this.prismaService.training_Program.update({
+				include: {
+					infoSubjects: {
+						include: {
+							subject: true,
+						},
+						where: {
+							status: 'activate',
+						},
+						orderBy: [
+							{
+								semester: 'asc',
+							},
+							{
+								create_at: 'desc',
+							},
+						],
+					},
+				},
 				where: {
 					id_training_program: trainingProgramId,
 					status: 'activate',
@@ -117,18 +135,68 @@ export class TrainingProgramRepository {
 						],
 					},
 				},
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async removeSubjectInTrainingProgram(
+		trainingProgramId: string,
+		infoSubjectId: string,
+	): Promise<TrainingProgramEntity> {
+		try {
+			return await this.prismaService.training_Program.update({
 				include: {
 					infoSubjects: {
 						include: {
 							subject: true,
 						},
+						where: {
+							status: 'activate',
+						},
+						orderBy: [
+							{
+								semester: 'asc',
+							},
+							{
+								create_at: 'desc',
+							},
+						],
+					},
+				},
+				where: {
+					id_training_program: trainingProgramId,
+					status: 'activate',
+					infoSubjects: {
+						some: {
+							id_info_subject: infoSubjectId,
+							status: 'activate',
+							subject: {
+								status: 'activate',
+							},
+						},
+					},
+				},
+				data: {
+					infoSubjects: {
+						update: [
+							{
+								where: {
+									id_info_subject: infoSubjectId,
+									status: 'activate',
+								},
+								data: {
+									delete_at: new Date(),
+									status: 'cancel',
+								},
+							},
+						],
 					},
 				},
 			});
 		} catch (error) {
-			if (error instanceof PrismaClientKnownRequestError) {
-				throw error;
-			}
+			throw error;
 		}
 	}
 }

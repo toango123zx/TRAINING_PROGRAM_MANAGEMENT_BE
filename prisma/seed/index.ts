@@ -5,10 +5,18 @@ import { trainingProgramSeedData } from './trainingProgram';
 import { userSeedData } from './user.seed';
 
 const seedData = async () => {
-	await roleSeedData();
-	await userSeedData();
-	await trainingProgramSeedData();
-	await subjectSeedData();
+	await roleSeedData().catch((error) => {
+		console.error('Error seeding roles:', error);
+	});
+	await userSeedData().catch((error) => {
+		console.error('Error seeding users:', error);
+	});
+	await trainingProgramSeedData().catch((error) => {
+		console.error('Error seeding trainign Program:', error);
+	});
+	await subjectSeedData().catch((error) => {
+		console.error('Error seeding subjects:', error);
+	});
 };
 
 seedData()

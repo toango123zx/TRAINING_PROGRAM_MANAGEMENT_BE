@@ -3,28 +3,26 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 import { HttpResponseBodySuccessDto } from 'src/common/dtos';
 import {
-	ConflictException,
 	InternalServerErrorException,
 	NotFoundException,
 } from 'src/exceptions';
 import { TrainingProgramEntity } from 'src/models';
 
 import { PrismaClientKnownRequestError } from 'src/modules/database/services';
-import { SubjectRepository } from 'src/modules/subject/repositories/subject.repository';
 
-import { AssginSubjectInTrainingProgramCommand } from '../implements';
+import { RemoveSubjectTrainingProgramCommand } from '../implements';
 import { TrainingProgramRepository } from '../../repositories/trainingProgram.repository';
 
-@CommandHandler(AssginSubjectInTrainingProgramCommand)
-export class AssginSubjectInTrainingProgramHandler
-	implements ICommandHandler<AssginSubjectInTrainingProgramCommand>
+@CommandHandler(RemoveSubjectTrainingProgramCommand)
+export class RemoveSubjectTrainingProgramHandler
+	implements ICommandHandler<RemoveSubjectTrainingProgramCommand>
 {
 	constructor(
 		private readonly trainingProgramRepository: TrainingProgramRepository,
-		private readonly subjectRepository: SubjectRepository,
 	) {}
+
 	async execute(
-		command: AssginSubjectInTrainingProgramCommand,
+		command: RemoveSubjectTrainingProgramCommand,
 	): Promise<HttpResponseBodySuccessDto<TrainingProgramEntity> | HttpException> {
 		try {
 			const trainingProgram = await this.trainingProgramRepository.findById(
@@ -34,25 +32,21 @@ export class AssginSubjectInTrainingProgramHandler
 				return new NotFoundException('trainingProgramId');
 			}
 
-			const subject = await this.subjectRepository.findById(command.subjectId);
-			if (!subject) {
-				return new NotFoundException('subjectId');
-			}
-
 			const newTrainingProgram =
-				await this.trainingProgramRepository.assignSubjectInTrainingProgram(
+				await this.trainingProgramRepository.removeSubjectInTrainingProgram(
 					command.trainingProgramId,
-					command.subjectId,
-					command.semester,
+					command.infoSubjectId,
 				);
+
 			return { data: newTrainingProgram };
 		} catch (error) {
 			if (
 				error instanceof PrismaClientKnownRequestError &&
 				error.code === 'P2025'
 			) {
-				return new ConflictException();
+				return new NotFoundException('infoSubjectId');
 			}
+
 			return new InternalServerErrorException();
 		}
 	}

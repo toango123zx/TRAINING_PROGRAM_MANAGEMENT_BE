@@ -6,6 +6,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { UserCommandHandlers } from './commands/handlers';
 import { RoleRepository } from '../role/repositories/role.repository';
 import { LecturerRepository } from '../lecturer/repositories/lecturer.repository';
+import { UserQueryHandlers } from './queries/handlers';
 
 @Module({
 	imports: [CqrsModule],
@@ -16,6 +17,7 @@ import { LecturerRepository } from '../lecturer/repositories/lecturer.repository
 		LecturerRepository,
 		PrismaService,
 		...UserCommandHandlers,
+		...UserQueryHandlers,
 	],
 })
 export class UserModule {}

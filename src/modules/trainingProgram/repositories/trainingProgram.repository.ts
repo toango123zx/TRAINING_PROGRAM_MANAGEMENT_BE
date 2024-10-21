@@ -5,17 +5,34 @@ import {
 	TrainingProgramEntity,
 	UpdateTrainingProgramDto,
 } from 'src/models';
-import {
-	PrismaClientKnownRequestError,
-	PrismaService,
-} from 'src/modules/database/services';
+import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
 export class TrainingProgramRepository {
 	constructor(private readonly prismaService: PrismaService) {}
-	async findAll(): Promise<TrainingProgramEntity[] | null> {
+	async findAll(
+		skip: number,
+		take: number,
+	): Promise<[TrainingProgramEntity[], number] | null> {
 		try {
-			return await this.prismaService.training_Program.findMany();
+			const [subject, totalRecords] = await Promise.all([
+				this.prismaService.training_Program.findMany({
+					where: {
+						status: 'activate',
+					},
+					skip: skip,
+					take: take,
+					orderBy: {
+						create_at: 'desc',
+					},
+				}),
+				this.prismaService.training_Program.count({
+					where: {
+						status: 'activate',
+					},
+				}),
+			]);
+			return [subject, totalRecords];
 		} catch (error) {
 			throw error;
 		}

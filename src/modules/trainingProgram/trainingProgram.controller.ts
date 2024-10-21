@@ -25,6 +25,7 @@ import {
 	AssginSubjectInTrainingProgramCommand,
 	CreateTrainingProgramCommand,
 	DeleteTrainingProgramCommand,
+	RemoveSubjectTrainingProgramCommand,
 	UpdateTrainingProgramCommand,
 } from './commands/implements';
 
@@ -79,7 +80,7 @@ export class TrainingProgramController {
 		return this.commandBus.execute(new DeleteTrainingProgramCommand(id));
 	}
 
-	@Post(':trainingProgramId/assign-subject/:subjectId')
+	@Post(':trainingProgramId/subject/:subjectId')
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard, RoleGuard)
 	@Authorize(Role.Admin)
@@ -93,6 +94,21 @@ export class TrainingProgramController {
 				trainingProgramId,
 				subjectId,
 				semester,
+			),
+		);
+	}
+	@Delete(':trainingProgramId/info-subject/:infoSubjectId')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	async removeSubjectInTrainingProgram(
+		@Param('trainingProgramId') trainingProgramId: string,
+		@Param('infoSubjectId') infoSubjectId: string,
+	): Promise<CommandBus> {
+		return this.commandBus.execute(
+			new RemoveSubjectTrainingProgramCommand(
+				trainingProgramId,
+				infoSubjectId,
 			),
 		);
 	}

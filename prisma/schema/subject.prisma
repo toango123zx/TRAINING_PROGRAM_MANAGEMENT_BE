@@ -11,7 +11,7 @@ enum Info_Subject_Status {
 model Subject {
     id_subject  String         @id @default(uuid())
     name        String
-    description String         @db.Text()
+    description String?        @db.Text()
     create_at   DateTime       @default(now())
     /// @DtoCreateHidden
     /// @DtoUpdateHidden
@@ -19,6 +19,7 @@ model Subject {
     /// @DtoCreateHidden
     /// @DtoUpdateHidden
     delete_at   DateTime?      @db.Date()
+    category    String         @default("Chuyên ngành")
     status      Subject_Status @default(activate)
 
     classes      Class[]
@@ -35,7 +36,7 @@ model Info_Subject {
     subject             Subject             @relation(fields: [id_subject], references: [id_subject])
     create_at           DateTime            @default(now())
     update_at           DateTime            @updatedAt
-    delete_at           DateTime?            @db.Date()
+    delete_at           DateTime?           @db.Date()
     status              Info_Subject_Status @default(activate)
     semester            Int
 }

@@ -19,8 +19,9 @@ export class LecturerEntity {
 	user?: UserEntity;
 	@ApiProperty({
 		type: 'string',
+		nullable: true,
 	})
-	description: string;
+	description: string | null;
 	@ApiProperty({
 		type: 'string',
 		nullable: true,
@@ -28,8 +29,9 @@ export class LecturerEntity {
 	degree: string | null;
 	@ApiProperty({
 		type: 'string',
+		nullable: true,
 	})
-	work_address: string;
+	work_address: string | null;
 	@ApiProperty({
 		enum: User_Status,
 	})

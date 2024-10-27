@@ -1,0 +1,742 @@
+[
+  {
+    "id_subject": "3190111",
+    "name": "Gi\u1ea3i t\u00edch 1",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "3190260",
+    "name": "\u0110\u1ea1i s\u1ed1 tuy\u1ebfn t\u00ednh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023590",
+    "name": "Nh\u1eadp m\u00f4n ng\u00e0nh (CNTT DT - HTDN)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022863",
+    "name": "K\u1ef9 thu\u1eadt l\u1eadp tr\u00ecnh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023060",
+    "name": "TH k\u1ef9 thu\u1eadt l\u1eadp tr\u00ecnh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "2090150",
+    "name": "Tri\u1ebft h\u1ecdc M\u00e1c - L\u00eanin",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "4130501",
+    "name": "Anh v\u0103n A2.1",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1022970",
+    "name": "C\u1ea5u tr\u00fac m\u00e1y t\u00ednh v\u00e0 vi x\u1eed l\u00fd",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "3050011",
+    "name": "V\u1eadt l\u00fd 1",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1023280",
+    "name": "C\u1ea5u tr\u00fac d\u1eef li\u1ec7u",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021263",
+    "name": "To\u00e1n r\u1eddi r\u1ea1c",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020072",
+    "name": "Ph\u01b0\u01a1ng ph\u00e1p t\u00ednh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022933",
+    "name": "PBL1: D\u1ef1 \u00e1n l\u1eadp tr\u00ecnh t\u00ednh to\u00e1n",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "4130311",
+    "name": "Anh v\u0103n A2.2",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "2090101",
+    "name": "T\u01b0 t\u01b0\u1edfng H\u1ed3 Ch\u00ed Minh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "3190121",
+    "name": "Gi\u1ea3i t\u00edch 2",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "3050660",
+    "name": "TN V\u1eadt l\u00fd (C\u01a1-Nhi\u1ec7t)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1023693",
+    "name": "L\u1eadp tr\u00ecnh h\u01b0\u1edbng \u0111\u1ed1i t\u01b0\u1ee3ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023290",
+    "name": "C\u01a1 s\u1edf d\u1eef li\u1ec7u",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022830",
+    "name": "Ph\u00e2n t\u00edch v\u00e0 thi\u1ebft k\u1ebf gi\u1ea3i thu\u1eadt",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022913",
+    "name": "Nguy\u00ean l\u00fd h\u1ec7 \u0111i\u1ec1u h\u00e0nh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023690",
+    "name": "PBL 2: D\u1ef1 \u00e1n c\u01a1 s\u1edf l\u1eadp tr\u00ecnh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "3190041",
+    "name": "X\u00e1c su\u1ea5t th\u1ed1ng k\u00ea",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1020292",
+    "name": "M\u1ea1ng m\u00e1y t\u00ednh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020141",
+    "name": "Ph\u00e2n t\u00edch v\u00e0 T.k\u1ebf h\u01b0\u1edbng \u0111\u1ed1i t\u01b0\u1ee3ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020252",
+    "name": "C\u00f4ng ngh\u1ec7 ph\u1ea7n m\u1ec1m",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023703",
+    "name": "L\u1eadp tr\u00ecnh .NET",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023713",
+    "name": "L\u1eadp tr\u00ecnh Java",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022853",
+    "name": "PBL 3: D\u1ef1 \u00e1n C\u00f4ng ngh\u1ec7 ph\u1ea7n m\u1ec1m",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022843",
+    "name": "\u0110\u1ed3 h\u1ecda m\u00e1y t\u00ednh",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022093",
+    "name": "Ng\u00f4n ng\u1eef h\u00ecnh th\u1ee9c",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020473",
+    "name": "Giao ti\u1ebfp ng\u01b0\u1eddi m\u00e1y",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "2090160",
+    "name": "Ch\u1ee7 ngh\u0129a X\u00e3 h\u1ed9i khoa h\u1ecdc",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1020113",
+    "name": "Ch\u01b0\u01a1ng tr\u00ecnh d\u1ecbch",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022470",
+    "name": "X\u1eed l\u00fd t\u00edn hi\u1ec7u s\u1ed1",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023220",
+    "name": "To\u00e1n \u1ee9ng d\u1ee5ng C\u00f4ng ngh\u1ec7 th\u00f4ng tin",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021523",
+    "name": "C\u00f4ng ngh\u1ec7 Web",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020353",
+    "name": "L\u1eadp tr\u00ecnh m\u1ea1ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023830",
+    "name": "PBL 4: D\u1ef1 \u00e1n h\u1ec7 \u0111i\u1ec1u h\u00e0nh v\u00e0 m\u1ea1ng m\u00e1y t\u00ednh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022880",
+    "name": "K\u1ef9 thu\u1eadt truy\u1ec1n s\u1ed1 li\u1ec7u",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022833",
+    "name": "L\u1eadp tr\u00ecnh tr\u00ean Linux",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023610",
+    "name": "\u0110i\u1ec7n to\u00e1n \u0111\u00e1m m\u00e2y",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "2090170",
+    "name": "L\u1ecbch s\u1eed \u0110\u1ea3ng C\u1ed9ng s\u1ea3n Vi\u1ec7t Nam",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1020313",
+    "name": "Tr\u00ed tu\u1ec7 nh\u00e2n t\u1ea1o",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023260",
+    "name": "Khoa h\u1ecdc d\u1eef li\u1ec7u",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021783",
+    "name": "Qu\u1ea3n l\u00fd d\u1ef1 \u00e1n CNTT",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021383",
+    "name": "Vi \u0111i\u1ec1u khi\u1ec3n",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023840",
+    "name": "PBL 5: D\u1ef1 \u00e1n K\u1ef9 thu\u1eadt m\u00e1y t\u00ednh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022873",
+    "name": "L\u1eadp tr\u00ecnh h\u1ec7 th\u1ed1ng nh\u00fang",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023583",
+    "name": "L\u1eadp tr\u00ecnh di \u0111\u1ed9ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022840",
+    "name": "K\u1ef9 thu\u1eadt s\u1ed1 \u1ee9ng d\u1ee5ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023850",
+    "name": "M\u1ea1ng n\u01a1ron v\u00e0 h\u1ecdc s\u00e2u",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023573",
+    "name": "L\u1eadp tr\u00ecnh Python",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "2170020",
+    "name": "Kinh t\u1ebf ch\u00ednh tr\u1ecb M\u00e1c - L\u00eanin",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "2100010",
+    "name": "Ph\u00e1p lu\u1eadt \u0111\u1ea1i c\u01b0\u01a1ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1021893",
+    "name": "Ki\u1ebfn tr\u00fac h\u01b0\u1edbng d\u1ecbch v\u1ee5",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020413",
+    "name": "Ki\u1ec3m th\u1eed ph\u1ea7n m\u1ec1m",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021883",
+    "name": "Chuy\u00ean \u0111\u1ec1 CN CNPM",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023640",
+    "name": "M\u00e3 ngu\u1ed3n m\u1edf",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023603",
+    "name": "Chuy\u00ean \u0111\u1ec1 c\u00f4ng ngh\u1ec7",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023780",
+    "name": "PBL 6: D\u1ef1 \u00e1n CN C\u00f4ng ngh\u1ec7 ph\u1ea7n m\u1ec1m",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021803",
+    "name": "Th\u1ef1c t\u1eadp T\u1ed1t nghi\u1ec7p (CNPM)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022023",
+    "name": "Ki\u1ebfn tr\u00fac doanh nghi\u1ec7p",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022013",
+    "name": "C\u01a1 s\u1edf h\u1ec7 th\u1ed1ng th\u00f4ng tin",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022053",
+    "name": "Khai ph\u00e1 d\u1eef li\u1ec7u",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021853",
+    "name": "Th\u01b0\u01a1ng m\u1ea1i \u0111i\u1ec7n t\u1eed",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023790",
+    "name": "PBL 6: D\u1ef1 \u00e1n CN H\u1ec7 th\u1ed1ng th\u00f4ng tin",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022043",
+    "name": "Th\u1ef1c t\u1eadp t\u1ed1t nghi\u1ec7p (HTTT)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020503",
+    "name": "An to\u00e0n Th\u00f4ng tin m\u1ea1ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022573",
+    "name": "M\u00e3 h\u00f3a v\u00e0 m\u1eadt m\u00e3",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022743",
+    "name": "Chuy\u00ean \u0111\u1ec1 CN ATTT",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023620",
+    "name": "Ki\u1ec3m th\u1eed x\u00e2m nh\u1eadp",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022763",
+    "name": "\u0110i\u1ec1u tra s\u1ed1",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023630",
+    "name": "C\u00f4ng ngh\u1ec7 Blockchain",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022703",
+    "name": "Ph\u00e2n t\u00edch v\u00e0 x\u1eed l\u00fd m\u00e3 \u0111\u1ed9c",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023800",
+    "name": "PBL 6: D\u1ef1 \u00e1n CN an to\u00e0n th\u00f4ng tin",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020543",
+    "name": "Qu\u1ea3n tr\u1ecb m\u1ea1ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021983",
+    "name": "Chuy\u00ean \u0111\u1ec1 CN M\u1ea1ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020523",
+    "name": "H\u1ec7 ph\u00e2n t\u00e1n",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020533",
+    "name": "L\u1eadp tr\u00ecnh m\u1ea1ng n\u00e2ng cao",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020553",
+    "name": "X\u1eed l\u00fd song song",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023810",
+    "name": "PBL 6: D\u1ef1 \u00e1n CN m\u1ea1ng m\u00e1y t\u00ednh v\u00e0 truy\u1ec1n th\u00f4ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021973",
+    "name": "Th\u1ef1c t\u1eadp T\u1ed1t nghi\u1ec7p (M\u1ea1ng)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023570",
+    "name": "Ph\u00e1t tri\u1ec3n \u1ee9ng d\u1ee5ng IoT",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021673",
+    "name": "Th\u1ecb gi\u00e1c m\u00e1y t\u00ednh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023633",
+    "name": "Chuy\u00ean \u0111\u1ec1 CN KTMT",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021603",
+    "name": "H\u1ec7 th\u1ed1ng th\u1eddi gian th\u1ef1c",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021693",
+    "name": "X\u1eed l\u00fd ti\u1ebfng n\u00f3i",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021663",
+    "name": "K\u1ef9 thu\u1eadt nh\u1eadn d\u1ea1ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023820",
+    "name": "PBL 6: D\u1ef1  \u00e1n CN k\u1ef9 thu\u1eadt m\u00e1y t\u00ednh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022603",
+    "name": "Th\u1ef1c t\u1eadp T\u1ed1t nghi\u1ec7p (CNTT)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023190",
+    "name": "\u0110\u1ed3 \u00e1n T\u1ed1t nghi\u1ec7p",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1182550",
+    "name": "Kinh t\u1ebf v\u00e0 qu\u1ea3n l\u00fd doanh nghi\u1ec7p",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1180933",
+    "name": "Qu\u1ea3n tr\u1ecb h\u1ecdc",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1024430",
+    "name": "Th\u1ef1c t\u1eadp chuy\u00ean ng\u00e0nh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023950",
+    "name": "Tr\u00ed tu\u1ec7 nh\u00e2n t\u1ea1o n\u00e2ng cao",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023960",
+    "name": "Khoa h\u1ecdc d\u1eef li\u1ec7u n\u00e2ng cao",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020373",
+    "name": "X\u1eed l\u00fd \u1ea3nh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023970",
+    "name": "To\u00e1n h\u1ecdc trong Khoa h\u1ecdc m\u00e1y t\u00ednh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023980",
+    "name": "X\u1eed l\u00fd ng\u00f4n ng\u1eef t\u1ef1 nhi\u00ean",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023990",
+    "name": "L\u01b0u tr\u1eef v\u00e0 x\u1eed l\u00fd d\u1eef li\u1ec7u l\u1edbn",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024000",
+    "name": "M\u00f4 h\u00ecnh h\u00f3a h\u00ecnh h\u1ecdc",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024010",
+    "name": "Khai ph\u00e1 d\u1eef li\u1ec7u Web",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024020",
+    "name": "PBL 7: D\u1ef1 \u00e1n chuy\u00ean ng\u00e0nh 2",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024130",
+    "name": "Anh v\u0103n CN",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024040",
+    "name": "Ki\u1ebfn tr\u00fac ph\u1ea7n m\u1ec1m",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024050",
+    "name": "An to\u00e0n v\u00e0 b\u1ea3o m\u1eadt th\u00f4ng tin",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024060",
+    "name": "C\u00f4ng ngh\u1ec7 IoT",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024070",
+    "name": "C\u00f4ng ngh\u1ec7 tri th\u1ee9c n\u00e2ng cao",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024080",
+    "name": "C\u00f4ng ngh\u1ec7 m\u1ea1ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024090",
+    "name": "T\u00ednh to\u00e1n hi\u1ec7u n\u0103ng cao",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024100",
+    "name": "C\u00e1c h\u1ec7 th\u1ed1ng th\u00f4ng minh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024110",
+    "name": "H\u1ec7 h\u1ed7 tr\u1ee3 ra quy\u1ebft \u0111\u1ecbnh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024140",
+    "name": "Capstone Project",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "4130040",
+    "name": "Anh v\u0103n A2.1 (CLC)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "4130050",
+    "name": "Anh v\u0103n A2.2 (CLC)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1022723",
+    "name": "Th\u1ef1c t\u1eadp T\u1ed1t nghi\u1ec7p (ATTT)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022940",
+    "name": "Nh\u1eadp m\u00f4n ng\u00e0nh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023643",
+    "name": "X\u1eed l\u00fd d\u1eef li\u1ec7u",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023140",
+    "name": "H\u1ecdc m\u00e1y v\u00e0 \u1ee9ng d\u1ee5ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023653",
+    "name": "Tr\u1ef1c quan h\u00f3a d\u1eef li\u1ec7u",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023860",
+    "name": "PBL6: D\u1ef1 \u00e1n chuy\u00ean ng\u00e0nh KHDL v\u00e0 TTNT",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023600",
+    "name": "Nh\u1eadp m\u00f4n ng\u00e0nh (Nh\u1eadt)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "130011",
+    "name": "Gi\u00e1o d\u1ee5c th\u1ec3 ch\u1ea5t 1",
+    "category": "Th\u1ec3 ch\u1ea5t"
+  },
+  {
+    "id_subject": "5070030",
+    "name": "Ti\u1ebfng Nh\u1eadt 1 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "5070040",
+    "name": "Ti\u1ebfng Nh\u1eadt 2 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "5070050",
+    "name": "Ti\u1ebfng Nh\u1eadt 3 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "3050670",
+    "name": "TN V\u1eadt l\u00fd (\u0110i\u1ec7n-T\u1eeb-Quang)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng"
+  },
+  {
+    "id_subject": "1023720",
+    "name": "L\u1eadp tr\u00ecnh h\u01b0\u1edbng \u0111\u1ed1i t\u01b0\u1ee3ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1020102",
+    "name": "C\u01a1 s\u1edf d\u1eef li\u1ec7u",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1022553",
+    "name": "L\u00fd thuy\u1ebft th\u00f4ng tin ",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023730",
+    "name": "TH L\u1eadp tr\u00ecnh h\u01b0\u1edbng \u0111\u1ed1i t\u01b0\u1ee3ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "5070060",
+    "name": "Ti\u1ebfng Nh\u1eadt 4 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023740",
+    "name": "PBL 3: \u0110\u1ed3 \u00e1n l\u1eadp tr\u00ecnh \u1ee9ng d\u1ee5ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "5070070",
+    "name": "Ti\u1ebfng Nh\u1eadt 5 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023870",
+    "name": "PBL 4: D\u1ef1 \u00e1n H\u1ec7 th\u1ed1ng th\u00f4ng minh",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023300",
+    "name": "Thi\u1ebft k\u1ebf H\u1ec7 th\u1ed1ng m\u1ea1ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "5070080",
+    "name": "Ti\u1ebfng Nh\u1eadt 6 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023880",
+    "name": "L\u1eadp tr\u00ecnh m\u1ea1ng",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023890",
+    "name": "TH L\u1eadp tr\u00ecnh m\u1ea1ng (0.5TC)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023900",
+    "name": "PBL 5: D\u1ef1 \u00e1n C\u00f4ng ngh\u1ec7 ph\u1ea7n m\u1ec1m",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "5070090",
+    "name": "Ti\u1ebfng Nh\u1eadt 7 (CNTT)",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023910",
+    "name": "Qu\u1ea3n tr\u1ecb m\u1ea1ng",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023930",
+    "name": "TH Qu\u1ea3n tr\u1ecb m\u1ea1ng (1TC)",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1021863",
+    "name": "C\u00e1c h\u1ec7 th\u1ed1ng \u0111a ph\u01b0\u01a1ng ti\u1ec7n",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1023920",
+    "name": "PBL 6: D\u1ef1 \u00e1n chuy\u00ean ng\u00e0nh 1",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024030",
+    "name": "Chuy\u00ean \u0111\u1ec1 c\u00f4ng ngh\u1ec7 th\u00f4ng tin",
+    "category": "\u0110\u1ea1i c\u01b0\u01a1ng ng\u00e0nh"
+  },
+  {
+    "id_subject": "1024120",
+    "name": "\u0110\u1ed3 \u00e1n t\u1ed1t nghi\u1ec7p",
+    "category": "Chuy\u00ean ng\u00e0nh"
+  }
+]

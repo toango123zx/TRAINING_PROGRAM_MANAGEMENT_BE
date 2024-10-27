@@ -43,6 +43,13 @@ export class TrainingProgramRepository {
 	): Promise<TrainingProgramEntity | null> {
 		try {
 			return await this.prismaService.training_Program.findUnique({
+				include: {
+					infoSubjects: {
+						include: {
+							subject: true,
+						},
+					},
+				},
 				where: {
 					id_training_program: trainingProgramId,
 					status: 'activate',

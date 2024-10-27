@@ -1,6 +1,7 @@
 import { User_Status } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
 import { RoleEntity } from '../../role/entities/role.entity';
+import { TrainingProgramEntity } from '../../training_program/entities/training_program.entity';
 import { LecturerEntity } from '../../lecturer/entities/lecturer.entity';
 import { InfoClassEntity } from '../../info_class/entities/info_class.entity';
 
@@ -56,10 +57,21 @@ export class UserEntity {
 	})
 	id_role: string;
 	@ApiProperty({
+		type: 'string',
+		nullable: true,
+	})
+	id_program: string | null;
+	@ApiProperty({
 		type: () => RoleEntity,
 		required: false,
 	})
 	role?: RoleEntity;
+	@ApiProperty({
+		type: () => TrainingProgramEntity,
+		required: false,
+		nullable: true,
+	})
+	program?: TrainingProgramEntity | null;
 	@ApiProperty({
 		enum: User_Status,
 	})

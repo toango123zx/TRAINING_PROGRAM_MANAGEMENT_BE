@@ -8,8 +8,9 @@ export class LecturerDto {
 	id_lecturer: string;
 	@ApiProperty({
 		type: 'string',
+		nullable: true,
 	})
-	description: string;
+	description: string | null;
 	@ApiProperty({
 		type: 'string',
 		nullable: true,
@@ -17,8 +18,9 @@ export class LecturerDto {
 	degree: string | null;
 	@ApiProperty({
 		type: 'string',
+		nullable: true,
 	})
-	work_address: string;
+	work_address: string | null;
 	@ApiProperty({
 		enum: User_Status,
 	})

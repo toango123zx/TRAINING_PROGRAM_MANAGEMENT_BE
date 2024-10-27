@@ -1,19 +1,11 @@
-import { CreateSubjectDto } from 'src/models';
 import { PrismaService } from '../../src/modules/database/services';
+
+import * as subjectData from './data/subject.json';
 
 const prismaService = new PrismaService();
 
 export const subjectSeedData = async () => {
-	const subjectData: CreateSubjectDto[] = [];
-
-	const trainigProgramQuantity = 20;
-
-	for (let i = 0; i < trainigProgramQuantity; i++) {
-		subjectData.push({
-			name: `Subject ${i}`,
-			description: `Description ${i}`,
-		});
-	}
-
-	return prismaService.subject.createMany({ data: subjectData });
+	return prismaService.subject.createMany({
+		data: subjectData.map((item) => item),
+	});
 };

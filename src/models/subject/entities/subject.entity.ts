@@ -14,8 +14,9 @@ export class SubjectEntity {
 	name: string;
 	@ApiProperty({
 		type: 'string',
+		nullable: true,
 	})
-	description: string;
+	description: string | null;
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
@@ -33,6 +34,10 @@ export class SubjectEntity {
 		nullable: true,
 	})
 	delete_at: Date | null;
+	@ApiProperty({
+		type: 'string',
+	})
+	category: string;
 	@ApiProperty({
 		enum: Subject_Status,
 	})

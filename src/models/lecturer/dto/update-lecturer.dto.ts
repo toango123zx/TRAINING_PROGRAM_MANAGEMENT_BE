@@ -5,10 +5,11 @@ export class UpdateLecturerDto {
 	@ApiProperty({
 		type: 'string',
 		required: false,
+		nullable: true,
 	})
 	@IsOptional()
 	@IsString()
-	description?: string;
+	description?: string | null;
 	@ApiProperty({
 		type: 'string',
 		required: false,
@@ -20,8 +21,9 @@ export class UpdateLecturerDto {
 	@ApiProperty({
 		type: 'string',
 		required: false,
+		nullable: true,
 	})
 	@IsOptional()
 	@IsString()
-	work_address?: string;
+	work_address?: string | null;
 }

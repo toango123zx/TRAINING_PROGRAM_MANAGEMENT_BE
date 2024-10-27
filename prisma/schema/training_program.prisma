@@ -6,7 +6,7 @@ enum Training_Program_Status {
 model Training_Program {
     id_training_program String                  @id @default(uuid())
     name                String
-    description         String                  @db.Text()
+    description         String?                 @db.Text()
     create_at           DateTime                @default(now())
     /// @DtoCreateHidden
     /// @DtoUpdateHidden
@@ -22,4 +22,5 @@ model Training_Program {
 
     /// @DtoRelationCanCreateOnUpdate
     infoSubjects Info_Subject[]
+    students     User[]
 }

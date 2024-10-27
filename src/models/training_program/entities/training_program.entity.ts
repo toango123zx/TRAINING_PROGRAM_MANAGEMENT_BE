@@ -1,6 +1,7 @@
 import { Training_Program_Status } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
 import { InfoSubjectEntity } from '../../info_subject/entities/info_subject.entity';
+import { UserEntity } from '../../user/entities/user.entity';
 
 export class TrainingProgramEntity {
 	@ApiProperty({
@@ -13,8 +14,9 @@ export class TrainingProgramEntity {
 	name: string;
 	@ApiProperty({
 		type: 'string',
+		nullable: true,
 	})
-	description: string;
+	description: string | null;
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',
@@ -51,4 +53,10 @@ export class TrainingProgramEntity {
 		required: false,
 	})
 	infoSubjects?: InfoSubjectEntity[];
+	@ApiProperty({
+		type: () => UserEntity,
+		isArray: true,
+		required: false,
+	})
+	students?: UserEntity[];
 }

@@ -4,10 +4,11 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { DatabaseModule } from '../database/database.module';
 import { CommandHandlers } from './commands/handlers';
 import { QueryHandlers } from './queries/handlers';
+import { ClassRepository } from './repositories/class.repository';
 
 @Module({
 	imports: [CqrsModule, DatabaseModule],
 	controllers: [ClassController],
-	providers: [...CommandHandlers, ...QueryHandlers],
+	providers: [...CommandHandlers, ...QueryHandlers, ClassRepository],
 })
 export class ClassModule {}

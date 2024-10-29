@@ -61,6 +61,7 @@ export class UserRepository {
 				this.prisma.user.count({
 					where: {
 						status: 'activate',
+						id_role: studentRole.id_role,
 					},
 				}),
 			]);
@@ -90,6 +91,7 @@ export class UserRepository {
 				this.prisma.user.count({
 					where: {
 						status: 'activate',
+						id_role: lecturerRole.id_role,
 					},
 				}),
 			]);

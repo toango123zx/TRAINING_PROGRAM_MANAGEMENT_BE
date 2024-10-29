@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { classSeedData } from './class.seed';
 import { infoSubjectSeedData } from './program_subject.seed';
 import { roleSeedData } from './role.seed';
 import { subjectSeedData } from './subject.seed';
@@ -20,6 +21,9 @@ const seedData = async () => {
 	});
 	await infoSubjectSeedData().catch((error) => {
 		console.error('Error seeding info subjects:', error);
+	});
+	await classSeedData().catch((error) => {
+		console.error('Error seeding classes:', error);
 	});
 };
 

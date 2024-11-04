@@ -1,9 +1,9 @@
-import { GetAllLecturerHandler } from './get-all-lecturer.handler';
 import { GetAllStudentHandler } from './get-all-student.handler';
+import { GetUserByIdHandler } from './get-user-by-id.handler';
 import { GetUsersHandler } from './get-user.handler';
 
 export const UserQueryHandlers = [
 	GetUsersHandler,
-	GetAllLecturerHandler,
 	GetAllStudentHandler,
+	GetUserByIdHandler,
 ];

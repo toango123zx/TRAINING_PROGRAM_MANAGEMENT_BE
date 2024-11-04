@@ -14,9 +14,8 @@ export class TrainingProgramEntity {
 	name: string;
 	@ApiProperty({
 		type: 'string',
-		nullable: true,
 	})
-	description: string | null;
+	description: string;
 	@ApiProperty({
 		type: 'string',
 		format: 'date-time',

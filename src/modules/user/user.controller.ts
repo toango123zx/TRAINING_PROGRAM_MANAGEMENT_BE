@@ -18,8 +18,8 @@ import { UpdateUserCommand } from './commands/implements';
 import { UpdateUserDto, CreateUserDto } from './dto';
 import { PaginationDto } from 'src/common/dtos';
 import {
-	GetAllLecturerQuery,
 	GetAllStudentQuery,
+	GetUserByIdQuery,
 	GetUserQuery,
 } from './queries/implements';
 
@@ -31,6 +31,11 @@ export class UserController {
 		private readonly queryBus: QueryBus,
 	) {}
 
+	@Get()
+	async getUsers(@Query() pagination: PaginationDto) {
+		return this.queryBus.execute(new GetUserQuery(pagination));
+	}
+
 	@Post()
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard, RoleGuard)
@@ -39,7 +44,12 @@ export class UserController {
 		return this.commandBus.execute(new CreateUserCommand(createUserDto));
 	}
 
-	@Put(':id')
+	@Get('/:id')
+	async getUserById(@Param('id') id: string): Promise<any> {
+		return this.queryBus.execute(new GetUserByIdQuery(id));
+	}
+
+	@Put('/:id')
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard, RoleGuard)
 	@Authorize(Role.Admin)
@@ -47,18 +57,8 @@ export class UserController {
 		return this.commandBus.execute(new UpdateUserCommand(id, updateUserDto));
 	}
 
-	@Get()
-	async getUsers(@Query() pagination: PaginationDto) {
-		return this.queryBus.execute(new GetUserQuery(pagination));
-	}
-
 	@Get('/student')
 	async getAllStudent(@Query() pagination: PaginationDto) {
 		return this.queryBus.execute(new GetAllStudentQuery(pagination));
-	}
-
-	@Get('/lecturer')
-	async getAllLecturer(@Query() pagination: PaginationDto) {
-		return this.queryBus.execute(new GetAllLecturerQuery(pagination));
 	}
 }

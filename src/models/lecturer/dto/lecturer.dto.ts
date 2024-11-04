@@ -8,9 +8,8 @@ export class LecturerDto {
 	id_lecturer: string;
 	@ApiProperty({
 		type: 'string',
-		nullable: true,
 	})
-	description: string | null;
+	description: string;
 	@ApiProperty({
 		type: 'string',
 		nullable: true,

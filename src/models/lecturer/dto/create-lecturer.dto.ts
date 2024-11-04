@@ -1,15 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateLecturerDto {
 	@ApiProperty({
 		type: 'string',
-		required: false,
-		nullable: true,
 	})
-	@IsOptional()
+	@IsNotEmpty()
 	@IsString()
-	description?: string | null;
+	description: string;
 	@ApiProperty({
 		type: 'string',
 		required: false,

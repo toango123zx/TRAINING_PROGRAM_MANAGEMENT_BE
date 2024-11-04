@@ -19,9 +19,8 @@ export class LecturerEntity {
 	user?: UserEntity;
 	@ApiProperty({
 		type: 'string',
-		nullable: true,
 	})
-	description: string | null;
+	description: string;
 	@ApiProperty({
 		type: 'string',
 		nullable: true,

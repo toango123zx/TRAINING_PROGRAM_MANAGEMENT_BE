@@ -11,7 +11,7 @@ enum Info_Subject_Status {
 model Subject {
     id_subject  String         @id @default(uuid())
     name        String
-    description String?        @db.Text()
+    description String         @db.Text()
     create_at   DateTime       @default(now())
     /// @DtoCreateHidden
     /// @DtoUpdateHidden

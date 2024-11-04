@@ -1,13 +1,13 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllLecturerQuery } from '../implements';
-import { UserRepository } from '../../repositories/user.repository';
+import { LecturerRepository } from '../../repositories/lecturer.repository';
 import { HttpResponseBodySuccessDto } from 'src/common/dtos';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 import { HttpException, InternalServerErrorException } from '@nestjs/common';
 
 @QueryHandler(GetAllLecturerQuery)
 export class GetAllLecturerHandler implements IQueryHandler<GetAllLecturerQuery> {
-	constructor(private readonly userRepository: UserRepository) {}
+	constructor(private readonly lecturerRepository: LecturerRepository) {}
 	async execute(
 		query: GetAllLecturerQuery,
 	): Promise<HttpResponseBodySuccessDto<SafeUserDto[]> | HttpException> {
@@ -15,7 +15,7 @@ export class GetAllLecturerHandler implements IQueryHandler<GetAllLecturerQuery>
 			const skip = (query.pagination.page - 1) * query.pagination.limit;
 
 			const [subjects, totalRecords] =
-				await this.userRepository.getAllLecturer(
+				await this.lecturerRepository.getAllLecturer(
 					skip,
 					query.pagination.limit,
 				);

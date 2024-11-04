@@ -13,8 +13,14 @@ export class UserRepository {
 		private readonly lecturerRepository: LecturerRepository,
 	) {}
 
-	async getById(id: string): Promise<User> {
-		return await this.prisma.user.findFirst({ where: { id_user: id } });
+	async getById(id: string): Promise<any> {
+		const user = await this.prisma.user.findFirst({
+			where: { id_user: id },
+			include: { Lecturer: true },
+		});
+		const safeUser = { ...new SafeUserDto(user), lecturer: user.Lecturer };
+		if (!safeUser.lecturer) delete safeUser.lecturer;
+		return safeUser;
 	}
 
 	async findAll(skip: number, take: number): Promise<[SafeUserDto[], number]> {
@@ -66,42 +72,6 @@ export class UserRepository {
 				}),
 			]);
 			return [users.map((user) => new SafeUserDto(user)), totalRecords];
-		} catch (error) {
-			throw error;
-		}
-	}
-
-	async getAllLecturer(skip: number, take: number): Promise<[any[], number]> {
-		try {
-			const lecturerRole = await this.prisma.role.findFirst({
-				where: {
-					name: Role.Lecturer,
-				},
-			});
-			const [users, totalRecords] = await Promise.all([
-				this.prisma.user.findMany({
-					where: {
-						status: 'activate',
-						id_role: lecturerRole.id_role,
-					},
-					skip: skip,
-					take: take,
-					include: { Lecturer: true },
-				}),
-				this.prisma.user.count({
-					where: {
-						status: 'activate',
-						id_role: lecturerRole.id_role,
-					},
-				}),
-			]);
-			return [
-				users.map((user) => ({
-					...new SafeUserDto(user),
-					lecturer: user.Lecturer,
-				})),
-				totalRecords,
-			];
 		} catch (error) {
 			throw error;
 		}

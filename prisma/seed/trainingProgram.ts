@@ -6,6 +6,6 @@ const prismaService = new PrismaService();
 
 export const trainingProgramSeedData = async () => {
 	return prismaService.training_Program.createMany({
-		data: trainingProgramData.map((item) => item),
+		data: trainingProgramData.map((item) => ({ ...item, description: '' })),
 	});
 };

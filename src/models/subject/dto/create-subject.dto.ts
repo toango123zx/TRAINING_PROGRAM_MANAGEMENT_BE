@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateSubjectDto {
 	@ApiProperty({
@@ -10,10 +10,8 @@ export class CreateSubjectDto {
 	name: string;
 	@ApiProperty({
 		type: 'string',
-		required: false,
-		nullable: true,
 	})
-	@IsOptional()
+	@IsNotEmpty()
 	@IsString()
-	description?: string | null;
+	description: string;
 }

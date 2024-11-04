@@ -6,6 +6,6 @@ const prismaService = new PrismaService();
 
 export const subjectSeedData = async () => {
 	return prismaService.subject.createMany({
-		data: subjectData.map((item) => item),
+		data: subjectData.map((item) => ({ ...item, description: '' })),
 	});
 };

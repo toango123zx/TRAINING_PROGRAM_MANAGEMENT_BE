@@ -37,11 +37,10 @@ export class UpdateTrainingProgramDto {
 	@ApiProperty({
 		type: 'string',
 		required: false,
-		nullable: true,
 	})
 	@IsOptional()
 	@IsString()
-	description?: string | null;
+	description?: string;
 	@ApiProperty({
 		type: 'string',
 		required: false,

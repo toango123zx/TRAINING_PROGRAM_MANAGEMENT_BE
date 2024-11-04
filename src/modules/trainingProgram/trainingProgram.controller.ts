@@ -12,7 +12,6 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-import { PaginationDto } from 'src/common/dtos';
 import { CreateTrainingProgramDto, UpdateTrainingProgramDto } from 'src/models';
 import { AuthGuard, RoleGuard } from 'src/shared/guards';
 import { Authorize } from 'src/common/decorators';
@@ -29,6 +28,7 @@ import {
 	RemoveSubjectTrainingProgramCommand,
 	UpdateTrainingProgramCommand,
 } from './commands/implements';
+import { GetAllTrainingProgramDto } from './dto';
 
 @ApiTags('Training Program')
 @Controller('training-program')
@@ -39,8 +39,8 @@ export class TrainingProgramController {
 	) {}
 
 	@Get()
-	async findAll(@Query() pagination: PaginationDto): Promise<QueryBus> {
-		return this.queryBus.execute(new GetTrainingProgramQuery(pagination));
+	async findAll(@Query() query: GetAllTrainingProgramDto): Promise<QueryBus> {
+		return this.queryBus.execute(new GetTrainingProgramQuery(query));
 	}
 
 	@Get(':id')
@@ -98,6 +98,7 @@ export class TrainingProgramController {
 			),
 		);
 	}
+
 	@Delete(':trainingProgramId/info-subject/:infoSubjectId')
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard, RoleGuard)

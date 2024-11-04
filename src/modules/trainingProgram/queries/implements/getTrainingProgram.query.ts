@@ -1,7 +1,6 @@
 import { IQuery } from '@nestjs/cqrs';
-
-import { PaginationDto } from 'src/common/dtos';
+import { GetAllTrainingProgramDto } from '../../dto';
 
 export class GetTrainingProgramQuery implements IQuery {
-	constructor(public readonly pagination: PaginationDto) {}
+	constructor(public readonly data: GetAllTrainingProgramDto) {}
 }

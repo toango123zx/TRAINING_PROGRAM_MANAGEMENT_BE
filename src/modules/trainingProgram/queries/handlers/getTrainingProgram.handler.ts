@@ -19,14 +19,15 @@ export class GetTrainingProgramHandler
 		query: GetTrainingProgramQuery,
 	): Promise<HttpResponseBodySuccessDto<TrainingProgramDto[]> | HttpException> {
 		try {
-			const skip = (query.pagination.page - 1) * query.pagination.limit;
+			const skip = (query.data.page - 1) * query.data.limit;
 
 			const [trainingProgram, totalRecords] =
 				await this.trainingProgramRepository.findAll(
 					skip,
-					query.pagination.limit,
+					query.data.limit,
+					query.data.name,
 				);
-			const totalPage = Math.ceil(totalRecords / query.pagination.limit);
+			const totalPage = Math.ceil(totalRecords / query.data.limit);
 			return { data: trainingProgram, totalPage: totalPage };
 		} catch (error) {
 			return new InternalServerErrorException();

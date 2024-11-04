@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import {
 	CreateTrainingProgramDto,
+	TrainingProgramDto,
 	TrainingProgramEntity,
 	UpdateTrainingProgramDto,
 } from 'src/models';
@@ -13,12 +14,14 @@ export class TrainingProgramRepository {
 	async findAll(
 		skip: number,
 		take: number,
+		name: string,
 	): Promise<[TrainingProgramEntity[], number] | null> {
 		try {
 			const [subject, totalRecords] = await Promise.all([
 				this.prismaService.training_Program.findMany({
 					where: {
 						status: 'activate',
+						name: { contains: name.toLowerCase(), mode: 'insensitive' },
 					},
 					skip: skip,
 					take: take,
@@ -29,6 +32,7 @@ export class TrainingProgramRepository {
 				this.prismaService.training_Program.count({
 					where: {
 						status: 'activate',
+						name: { contains: name.toLowerCase(), mode: 'insensitive' },
 					},
 				}),
 			]);
@@ -222,5 +226,16 @@ export class TrainingProgramRepository {
 		} catch (error) {
 			throw error;
 		}
+	}
+
+	async findByName(name: string): Promise<TrainingProgramDto[]> {
+		return await this.prismaService.training_Program.findMany({
+			where: {
+				name: {
+					contains: name,
+					mode: 'insensitive',
+				},
+			},
+		});
 	}
 }

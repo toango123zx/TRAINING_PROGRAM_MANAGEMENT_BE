@@ -7,7 +7,13 @@ import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
 export class LecturerRepository {
-	constructor(private readonly prisma: PrismaService) {}
+	lecturerRole: { id_role: string; name: string; description: string };
+
+	constructor(private readonly prisma: PrismaService) {
+		prisma.role
+			.findFirst({ where: { name: Role.Lecturer } })
+			.then((data) => (this.lecturerRole = data));
+	}
 
 	async findById(id: string): Promise<any> {
 		const lecturer = await this.prisma.lecturer.findFirst({
@@ -20,7 +26,7 @@ export class LecturerRepository {
 		return { ...new SafeUserDto(user), lecturer: lecturer };
 	}
 
-	async findByUserId(id: string): Promise<Lecturer | null> {
+	async findByLecturerId(id: string): Promise<Lecturer | null> {
 		return await this.prisma.lecturer.findFirst({ where: { id_user: id } });
 	}
 
@@ -37,16 +43,11 @@ export class LecturerRepository {
 
 	async getAllLecturer(skip: number, take: number): Promise<[any[], number]> {
 		try {
-			const lecturerRole = await this.prisma.role.findFirst({
-				where: {
-					name: Role.Lecturer,
-				},
-			});
 			const [users, totalRecords] = await Promise.all([
 				this.prisma.user.findMany({
 					where: {
 						status: 'activate',
-						id_role: lecturerRole.id_role,
+						id_role: this.lecturerRole.id_role,
 					},
 					skip: skip,
 					take: take,
@@ -55,7 +56,7 @@ export class LecturerRepository {
 				this.prisma.user.count({
 					where: {
 						status: 'activate',
-						id_role: lecturerRole.id_role,
+						id_role: this.lecturerRole.id_role,
 					},
 				}),
 			]);

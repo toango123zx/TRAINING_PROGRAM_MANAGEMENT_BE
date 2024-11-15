@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 import { Role } from 'src/common/enums';
 import { PrismaService } from 'src/modules/database/services';
+import { StudentDto } from '../dtos';
+import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 
 @Injectable()
 export class StudentRepository {
@@ -17,7 +18,7 @@ export class StudentRepository {
 			});
 	}
 
-	async findAll(skip: number, take: number): Promise<[SafeUserDto[], number]> {
+	async findAll(skip: number, take: number): Promise<[StudentDto[], number]> {
 		try {
 			const [users, totalRecords] = await Promise.all([
 				this.prisma.user.findMany({
@@ -35,17 +36,22 @@ export class StudentRepository {
 					},
 				}),
 			]);
-			return [users.map((user) => new SafeUserDto(user)), totalRecords];
+			return [users.map((user) => new StudentDto(user)), totalRecords];
 		} catch (error) {
 			throw error;
 		}
 	}
 
-	async findById(id: string): Promise<SafeUserDto | null> {
-		return new SafeUserDto(
-			await this.prisma.user.findFirst({
-				where: { id_user: id, id_role: this.studentRole.id_role },
-			}),
-		);
+	async findById(id: string): Promise<any | null> {
+		const student = await this.prisma.user.findFirst({
+			where: { id_user: id, id_role: this.studentRole.id_role },
+		});
+		const program = await this.prisma.training_Program.findFirst({
+			where: { id_training_program: student.id_program },
+		});
+		return {
+			...new SafeUserDto(student),
+			program: program,
+		};
 	}
 }

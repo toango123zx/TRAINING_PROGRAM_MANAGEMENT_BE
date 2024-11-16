@@ -14,6 +14,7 @@ export class HealthCheckRepository {
 			await this.prismaService.$queryRaw`SELECT 1`;
 			return true;
 		} catch (error) {
+			// eslint-disable-next-line no-console
 			console.log(
 				'🚀 ~ file: index.ts:16 ~ HealthCheckRepository ~ getConection ~ error:',
 				error,

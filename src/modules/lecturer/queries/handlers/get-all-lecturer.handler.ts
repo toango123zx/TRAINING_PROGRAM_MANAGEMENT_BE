@@ -14,13 +14,13 @@ export class GetAllLecturerHandler implements IQueryHandler<GetAllLecturerQuery>
 		try {
 			const skip = (query.pagination.page - 1) * query.pagination.limit;
 
-			const [subjects, totalRecords] =
+			const [lecturers, totalRecords] =
 				await this.lecturerRepository.getAllLecturer(
 					skip,
 					query.pagination.limit,
 				);
 			const totalPage = Math.ceil(totalRecords / query.pagination.limit);
-			return { data: subjects, totalPage };
+			return { data: lecturers, totalPage };
 		} catch (error) {
 			return new InternalServerErrorException();
 		}

@@ -12,5 +12,5 @@ export class HttpResponseBodySuccessDto<T> {
 		nullable: true,
 		type: Number,
 	})
-	totalPage?: Number;
+	totalPage?: number;
 }

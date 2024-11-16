@@ -7,6 +7,7 @@ import { UserCommandHandlers } from './commands/handlers';
 import { RoleRepository } from '../role/repositories/role.repository';
 import { LecturerRepository } from '../lecturer/repositories/lecturer.repository';
 import { UserQueryHandlers } from './queries/handlers';
+import { CloudinaryService } from '../cloudinary/cloudinary.service';
 
 @Module({
 	imports: [CqrsModule],
@@ -16,6 +17,7 @@ import { UserQueryHandlers } from './queries/handlers';
 		RoleRepository,
 		LecturerRepository,
 		PrismaService,
+		CloudinaryService,
 		...UserCommandHandlers,
 		...UserQueryHandlers,
 	],

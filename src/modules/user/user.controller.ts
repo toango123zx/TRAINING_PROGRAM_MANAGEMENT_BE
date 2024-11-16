@@ -1,20 +1,24 @@
 import {
+	BadRequestException,
 	Body,
 	Controller,
 	Get,
 	Param,
+	Patch,
 	Post,
 	Put,
 	Query,
+	UploadedFile,
 	UseGuards,
+	UseInterceptors,
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateUserCommand } from './commands/implements/create-user.command';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { AuthGuard, RoleGuard } from '../../shared/guards';
 import { Authorize } from '../../common/decorators';
 import { Role } from '../../common/enums';
-import { UpdateUserCommand } from './commands/implements';
+import { UpdateUserCommand, UpdateUserPhotoCommand } from './commands/implements';
 import { UpdateUserDto, CreateUserDto } from './dto';
 import { PaginationDto } from 'src/common/dtos';
 import {
@@ -22,6 +26,7 @@ import {
 	GetUserByIdQuery,
 	GetUserQuery,
 } from './queries/implements';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Users')
 @Controller('user')
@@ -60,5 +65,44 @@ export class UserController {
 	@Get('/student')
 	async getAllStudent(@Query() pagination: PaginationDto) {
 		return this.queryBus.execute(new GetAllStudentQuery(pagination));
+	}
+
+	@Patch('/:id/photo')
+	@ApiConsumes('multipart/form-data')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	@ApiBody({
+		description: 'File upload',
+		schema: {
+			type: 'object',
+			properties: {
+				file: {
+					type: 'string',
+					format: 'binary',
+				},
+			},
+		},
+	})
+	@UseInterceptors(
+		FileInterceptor('file', {
+			limits: { fileSize: 5 * 1024 * 1024 },
+			fileFilter: (req, file, callback) => {
+				if (!file.mimetype.match(/image\/(jpeg|png|gif)/)) {
+					callback(
+						new BadRequestException('Only image files are allowed!'),
+						false,
+					);
+				} else {
+					callback(null, true);
+				}
+			},
+		}),
+	)
+	async updatePhoto(
+		@Param('id') id: string,
+		@UploadedFile() file: Express.Multer.File,
+	) {
+		return this.commandBus.execute(new UpdateUserPhotoCommand(id, file));
 	}
 }

@@ -1,16 +1,18 @@
 import { User } from '@prisma/client';
 import { PrismaService } from '../../database/services';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { LecturerRepository } from 'src/modules/lecturer/repositories/lecturer.repository';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 import { Role } from 'src/common/enums';
+import { CloudinaryService } from 'src/modules/cloudinary/cloudinary.service';
 
 @Injectable()
 export class UserRepository {
 	constructor(
 		private readonly prisma: PrismaService,
 		private readonly lecturerRepository: LecturerRepository,
+		private readonly cloudinaryService: CloudinaryService,
 	) {}
 
 	async getById(id: string): Promise<any> {
@@ -102,5 +104,16 @@ export class UserRepository {
 		});
 
 		return { ...newUser, lecturer: newLecturer };
+	}
+
+	async updateUserPhoto(id: string, file: Express.Multer.File) {
+		const user = await this.prisma.user.findFirst({ where: { id_user: id } });
+		if (!user) throw new NotFoundException();
+
+		const response = await this.cloudinaryService.uploadImage(file);
+		return await this.prisma.user.update({
+			data: { photo_url: response.url },
+			where: { id_user: id },
+		});
 	}
 }

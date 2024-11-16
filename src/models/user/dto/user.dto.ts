@@ -41,6 +41,10 @@ export class UserDto {
 	address: string;
 	@ApiProperty({
 		type: 'string',
+	})
+	photo_url: string;
+	@ApiProperty({
+		type: 'string',
 		format: 'date-time',
 	})
 	create_at: Date;

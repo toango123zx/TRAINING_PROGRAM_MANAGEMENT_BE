@@ -12,6 +12,7 @@ export class SafeUserDto {
 		this.address = user.address;
 		this.create_at = user.create_at;
 		this.id_role = user.id_role;
+		this.photo_url = user.photo_url;
 	}
 
 	id_user: string;
@@ -24,4 +25,5 @@ export class SafeUserDto {
 	address: string;
 	create_at: Date;
 	id_role: string;
+	photo_url: string;
 }

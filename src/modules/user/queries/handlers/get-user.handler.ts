@@ -14,12 +14,12 @@ export class GetUsersHandler implements IQueryHandler<GetUserQuery> {
 		try {
 			const skip = (query.pagination.page - 1) * query.pagination.limit;
 
-			const [subjects, totalRecords] = await this.userRepository.findAll(
+			const [users, totalRecords] = await this.userRepository.findAll(
 				skip,
 				query.pagination.limit,
 			);
 			const totalPage = Math.ceil(totalRecords / query.pagination.limit);
-			return { data: subjects, totalPage };
+			return { data: users, totalPage };
 		} catch (error) {
 			return new InternalServerErrorException();
 		}

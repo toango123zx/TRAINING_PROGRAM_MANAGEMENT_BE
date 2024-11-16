@@ -1,5 +1,6 @@
 import { AuthModule } from './auth/auth.module';
 import { ClassModule } from './class/class.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { DatabaseModule } from './database/database.module';
 import { HealthCheckModule } from './healthCheck/healthCheck.module';
 import { LecturerModule } from './lecturer/lecturer.module';
@@ -20,4 +21,5 @@ export const Modules = [
 	TrainingProgramModule,
 	SubjectModule,
 	ClassModule,
+	CloudinaryModule,
 ];

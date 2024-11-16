@@ -13,6 +13,7 @@ export class StudentDto {
 		this.create_at = user.create_at;
 		this.id_role = user.id_role;
 		this.id_program = user.id_program;
+		this.photo_url = user.photo_url;
 	}
 
 	id_user: string;
@@ -26,4 +27,5 @@ export class StudentDto {
 	create_at: Date;
 	id_role: string;
 	id_program: string;
+	photo_url: string;
 }

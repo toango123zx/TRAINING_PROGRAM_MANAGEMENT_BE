@@ -14,12 +14,12 @@ export class GetAllStudentHandler implements IQueryHandler<GetAllStudentQuery> {
 		try {
 			const skip = (query.pagination.page - 1) * query.pagination.limit;
 
-			const [subjects, totalRecords] = await this.userRepository.getAllStudent(
+			const [students, totalRecords] = await this.userRepository.getAllStudent(
 				skip,
 				query.pagination.limit,
 			);
 			const totalPage = Math.ceil(totalRecords / query.pagination.limit);
-			return { data: subjects, totalPage };
+			return { data: students, totalPage };
 		} catch (error) {
 			return new InternalServerErrorException();
 		}

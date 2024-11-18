@@ -27,11 +27,7 @@ import {
 } from './commands/implements';
 import { UpdateUserDto, CreateUserDto, ChangePasswordDto } from './dto';
 import { PaginationDto } from 'src/common/dtos';
-import {
-	GetAllStudentQuery,
-	GetUserByIdQuery,
-	GetUserQuery,
-} from './queries/implements';
+import { GetUserByIdQuery, GetUserQuery } from './queries/implements';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Users')
@@ -78,11 +74,6 @@ export class UserController {
 	@Authorize(Role.Admin)
 	async updateUser(@Body() updateUserDto: UpdateUserDto, @Param('id') id: string) {
 		return this.commandBus.execute(new UpdateUserCommand(id, updateUserDto));
-	}
-
-	@Get('/student')
-	async getAllStudent(@Query() pagination: PaginationDto) {
-		return this.queryBus.execute(new GetAllStudentQuery(pagination));
 	}
 
 	@Patch('/:id/photo')

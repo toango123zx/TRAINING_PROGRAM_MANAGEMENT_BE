@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Role } from 'src/common/enums';
 import { PrismaService } from 'src/modules/database/services';
 import { StudentDto } from '../dtos';
@@ -53,5 +53,33 @@ export class StudentRepository {
 			...new SafeUserDto(student),
 			program: program,
 		};
+	}
+
+	async getClassesByStudentId(id: string) {
+		const student = await this.prisma.user.findFirst({
+			where: { id_user: id, id_role: this.studentRole.id_role },
+		});
+		if (!student) throw new NotFoundException();
+		const infos = await this.prisma.info_Class.findMany({
+			where: { id_user: student.id_user },
+			include: {
+				class: {
+					include: {
+						subject: true,
+						lecturer: { include: { user: true } },
+					},
+				},
+			},
+		});
+		const classes = infos.map((info) => {
+			const lecturerData = { ...info.class.lecturer };
+			delete lecturerData.user;
+			const safeInfoLecturer = {
+				...lecturerData,
+				...new SafeUserDto(info.class.lecturer.user),
+			};
+			return { ...info.class, lecturer: safeInfoLecturer };
+		});
+		return classes;
 	}
 }

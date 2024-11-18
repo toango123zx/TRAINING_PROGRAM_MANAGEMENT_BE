@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Lecturer } from '@prisma/client';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 import { Role } from 'src/common/enums';
@@ -70,5 +70,15 @@ export class LecturerRepository {
 		} catch (error) {
 			throw error;
 		}
+	}
+
+	async getClassesByLecturerId(id: string) {
+		const user = await this.findById(id);
+		if (!user) return new NotFoundException();
+
+		return await this.prisma.class.findMany({
+			where: { id_lecturer: user.lecturer.id_lecturer, status: 'activate' },
+			include: { subject: true },
+		});
 	}
 }

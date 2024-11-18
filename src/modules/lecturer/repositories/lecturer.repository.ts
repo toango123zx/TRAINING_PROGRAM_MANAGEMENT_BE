@@ -17,7 +17,7 @@ export class LecturerRepository {
 
 	async findById(id: string): Promise<any> {
 		const lecturer = await this.prisma.lecturer.findFirst({
-			where: { id_lecturer: id },
+			where: { OR: [{ id_user: id }, { id_lecturer: id }] },
 		});
 		const user = await this.prisma.user.findFirst({
 			where: { id_user: lecturer.id_user },

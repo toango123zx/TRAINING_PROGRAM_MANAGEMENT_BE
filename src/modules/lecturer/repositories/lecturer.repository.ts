@@ -15,9 +15,9 @@ export class LecturerRepository {
 			.then((data) => (this.lecturerRole = data));
 	}
 
-	async findById(id: string): Promise<any> {
+	async findByUserId(id: string): Promise<any> {
 		const lecturer = await this.prisma.lecturer.findFirst({
-			where: { OR: [{ id_user: id }, { id_lecturer: id }] },
+			where: { id_user: id },
 		});
 		const user = await this.prisma.user.findFirst({
 			where: { id_user: lecturer.id_user },
@@ -26,8 +26,15 @@ export class LecturerRepository {
 		return { ...new SafeUserDto(user), lecturer: lecturer };
 	}
 
-	async findByLecturerId(id: string): Promise<Lecturer | null> {
-		return await this.prisma.lecturer.findFirst({ where: { id_user: id } });
+	async findByLecturerId(id: string): Promise<any> {
+		const lecturer = await this.prisma.lecturer.findFirst({
+			where: { id_lecturer: id },
+		});
+		const user = await this.prisma.user.findFirst({
+			where: { id_user: lecturer.id_user },
+		});
+		delete lecturer.id_user;
+		return { ...new SafeUserDto(user), lecturer: lecturer };
 	}
 
 	async updateByUserId(
@@ -73,7 +80,7 @@ export class LecturerRepository {
 	}
 
 	async getClassesByLecturerId(id: string) {
-		const user = await this.findById(id);
+		const user = await this.findByUserId(id);
 		if (!user) return new NotFoundException();
 
 		return await this.prisma.class.findMany({

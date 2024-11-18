@@ -2,6 +2,7 @@
 import { classSeedData } from './class.seed';
 import { infoSubjectSeedData } from './program_subject.seed';
 import { roleSeedData } from './role.seed';
+import { studentClassDataSeed } from './student_class.seed';
 import { subjectSeedData } from './subject.seed';
 import { trainingProgramSeedData } from './trainingProgram';
 import { userSeedData } from './user.seed';
@@ -24,6 +25,9 @@ const seedData = async () => {
 	});
 	await classSeedData().catch((error) => {
 		console.error('Error seeding classes:', error);
+	});
+	await studentClassDataSeed().catch((error) => {
+		console.error('Error seeding student in classes:', error);
 	});
 };
 

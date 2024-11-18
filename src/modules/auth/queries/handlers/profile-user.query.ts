@@ -23,7 +23,9 @@ export class ProfileUserHandler implements IQueryHandler<ProfileUserQuery> {
 		const safeUserData = new SafeUserDto(user);
 		if (payload.role !== Role.Lecturer) return safeUserData;
 
-		const lecturerData = await this.lecturerRepository.findById(user.id_user);
+		const lecturerData = await this.lecturerRepository.findByUserId(
+			user.id_user,
+		);
 		return { ...safeUserData, lecturer: lecturerData.lecturer };
 	}
 }

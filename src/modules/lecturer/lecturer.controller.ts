@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Query, Request, UseGuards } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import {
@@ -10,6 +10,7 @@ import { PaginationDto } from 'src/common/dtos';
 import { AuthGuard, RoleGuard } from 'src/shared/guards';
 import { Authorize } from 'src/common/decorators';
 import { Role } from 'src/common/enums';
+import { FindLecturerByIdDto } from './dto';
 
 @ApiTags('Lecturers')
 @Controller('lecturer')
@@ -31,8 +32,10 @@ export class LecturerController {
 		);
 	}
 
-	@Get('/:id')
-	async getLecturerById(@Param('id') id: string): Promise<any> {
-		return this.queryBus.execute(new GetLecturerByIdQuery(id));
+	@Get('/find')
+	async getLecturerById(@Query() dto: FindLecturerByIdDto): Promise<any> {
+		return this.queryBus.execute(
+			new GetLecturerByIdQuery(dto.userId, dto.lecturerId),
+		);
 	}
 }

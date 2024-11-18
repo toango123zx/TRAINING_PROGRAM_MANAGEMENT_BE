@@ -1,11 +1,12 @@
 import { User } from '@prisma/client';
 import { PrismaService } from '../../database/services';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { LecturerRepository } from 'src/modules/lecturer/repositories/lecturer.repository';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 import { Role } from 'src/common/enums';
 import { CloudinaryService } from 'src/modules/cloudinary/cloudinary.service';
+import { hash } from 'bcryptjs';
 
 @Injectable()
 export class UserRepository {
@@ -114,6 +115,21 @@ export class UserRepository {
 		return await this.prisma.user.update({
 			data: { photo_url: response.url },
 			where: { id_user: id },
+		});
+	}
+
+	async updateUserPassword(id: string, oldPassword: string, newPassword: string) {
+		const user = await this.prisma.user.findFirst({ where: { id_user: id } });
+		if (!user) throw new NotFoundException();
+		const { salt, password } = user;
+		if (password.trim() !== (await hash(oldPassword, salt)).trim())
+			throw new BadRequestException('Old password mismatched');
+
+		return await this.prisma.user.update({
+			where: { id_user: id },
+			data: {
+				password: await hash(newPassword, salt),
+			},
 		});
 	}
 }

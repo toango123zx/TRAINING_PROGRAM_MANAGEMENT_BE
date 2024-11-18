@@ -8,6 +8,7 @@ import {
 	Post,
 	Put,
 	Query,
+	Request,
 	UploadedFile,
 	UseGuards,
 	UseInterceptors,
@@ -18,8 +19,13 @@ import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { AuthGuard, RoleGuard } from '../../shared/guards';
 import { Authorize } from '../../common/decorators';
 import { Role } from '../../common/enums';
-import { UpdateUserCommand, UpdateUserPhotoCommand } from './commands/implements';
-import { UpdateUserDto, CreateUserDto } from './dto';
+import {
+	UpdateCurrentUserPasswordCommand,
+	UpdateUserCommand,
+	UpdateUserPasswordCommand,
+	UpdateUserPhotoCommand,
+} from './commands/implements';
+import { UpdateUserDto, CreateUserDto, ChangePasswordDto } from './dto';
 import { PaginationDto } from 'src/common/dtos';
 import {
 	GetAllStudentQuery,
@@ -39,6 +45,18 @@ export class UserController {
 	@Get()
 	async getUsers(@Query() pagination: PaginationDto) {
 		return this.queryBus.execute(new GetUserQuery(pagination));
+	}
+
+	@Patch('/current/password')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard)
+	async updateCurrentUserPassword(
+		@Request() request: any,
+		@Body() dto: ChangePasswordDto,
+	) {
+		return this.commandBus.execute(
+			new UpdateCurrentUserPasswordCommand(request.user.id_user, dto),
+		);
 	}
 
 	@Post()
@@ -104,5 +122,16 @@ export class UserController {
 		@UploadedFile() file: Express.Multer.File,
 	) {
 		return this.commandBus.execute(new UpdateUserPhotoCommand(id, file));
+	}
+
+	@Patch('/:id/password')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	async updateUserPassword(
+		@Param('id') id: string,
+		@Body() dto: ChangePasswordDto,
+	) {
+		return this.commandBus.execute(new UpdateUserPasswordCommand(id, dto));
 	}
 }

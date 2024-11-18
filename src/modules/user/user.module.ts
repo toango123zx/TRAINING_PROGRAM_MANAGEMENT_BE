@@ -8,6 +8,7 @@ import { RoleRepository } from '../role/repositories/role.repository';
 import { LecturerRepository } from '../lecturer/repositories/lecturer.repository';
 import { UserQueryHandlers } from './queries/handlers';
 import { CloudinaryService } from '../cloudinary/cloudinary.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
 	imports: [CqrsModule],
@@ -18,6 +19,7 @@ import { CloudinaryService } from '../cloudinary/cloudinary.service';
 		LecturerRepository,
 		PrismaService,
 		CloudinaryService,
+		JwtService,
 		...UserCommandHandlers,
 		...UserQueryHandlers,
 	],

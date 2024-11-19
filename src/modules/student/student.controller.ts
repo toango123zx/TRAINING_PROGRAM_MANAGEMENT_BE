@@ -1,5 +1,14 @@
-import { Controller, Get, Param, Query, Request, UseGuards } from '@nestjs/common';
-import { QueryBus } from '@nestjs/cqrs';
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	Patch,
+	Query,
+	Request,
+	UseGuards,
+} from '@nestjs/common';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { PaginationDto } from 'src/common/dtos';
 import {
@@ -10,11 +19,17 @@ import {
 import { AuthGuard, RoleGuard } from 'src/shared/guards';
 import { Authorize } from 'src/common/decorators';
 import { Role } from 'src/common/enums';
+import { UpdateStudentDto } from './dtos';
+import { UpdateCurrentStudentCommand } from './commands/implements';
+import { User } from '@prisma/client';
 
 @ApiTags('Student')
 @Controller('student')
 export class StudentController {
-	constructor(private readonly queryBus: QueryBus) {}
+	constructor(
+		private readonly queryBus: QueryBus,
+		private readonly commandBus: CommandBus,
+	) {}
 
 	@Get()
 	async getUsers(@Query() pagination: PaginationDto) {
@@ -28,6 +43,19 @@ export class StudentController {
 	async getCurrentStudentClasses(@Request() request: any) {
 		return this.queryBus.execute(
 			new GetClassesByStudentIdQuery(request.user.id_user),
+		);
+	}
+
+	@Patch('/current/profile')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Student)
+	async updateCurrentProfile(
+		@Request() request: any,
+		@Body() dto: UpdateStudentDto,
+	): Promise<User> {
+		return this.commandBus.execute(
+			new UpdateCurrentStudentCommand(request.user.id_user, dto),
 		);
 	}
 

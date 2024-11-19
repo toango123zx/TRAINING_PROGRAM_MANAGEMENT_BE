@@ -4,6 +4,7 @@ import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 import { Role } from 'src/common/enums';
 import { UpdateLecturerDto } from 'src/models';
 import { PrismaService } from 'src/modules/database/services';
+import { UpdateCurrentLecturerDto } from '../dto';
 
 @Injectable()
 export class LecturerRepository {
@@ -87,5 +88,25 @@ export class LecturerRepository {
 			where: { id_lecturer: user.lecturer.id_lecturer, status: 'activate' },
 			include: { subject: true },
 		});
+	}
+
+	async updateLecturer(id: string, dto: UpdateCurrentLecturerDto) {
+		const data = Object.fromEntries(
+			Object.entries(dto).filter(([, value]) => !!value),
+		);
+
+		let lecturerData = { ...data.lecturer };
+		if (lecturerData) {
+			lecturerData = Object.fromEntries(
+				Object.entries(lecturerData).filter(([, value]) => !!value),
+			);
+			await this.prisma.lecturer.update({
+				where: { id_user: id },
+				data: lecturerData,
+			});
+		}
+		delete data.lecturer;
+		await this.prisma.user.update({ where: { id_user: id }, data });
+		return await this.findByUserId(id);
 	}
 }

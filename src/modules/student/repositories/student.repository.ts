@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Role } from 'src/common/enums';
 import { PrismaService } from 'src/modules/database/services';
-import { StudentDto } from '../dtos';
+import { StudentDto, UpdateStudentDto } from '../dtos';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
 
 @Injectable()
@@ -81,5 +81,12 @@ export class StudentRepository {
 			return { ...info.class, lecturer: safeInfoLecturer };
 		});
 		return classes;
+	}
+
+	async updateStudent(id: string, dto: UpdateStudentDto) {
+		const data = Object.fromEntries(
+			Object.entries(dto).filter(([, value]) => !!value),
+		);
+		return await this.prisma.user.update({ where: { id_user: id }, data });
 	}
 }

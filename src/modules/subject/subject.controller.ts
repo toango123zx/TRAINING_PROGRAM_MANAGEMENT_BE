@@ -21,10 +21,12 @@ import {
 	GetClassBySubjectIdQuery,
 } from './queries/implements';
 import {
+	CreatClassBySubjectIdCommand,
 	CreateSubjectCommand,
 	DeleteSubjectCommand,
 	UpdateSubjectCommand,
 } from './commands/implements';
+import { CreateClassBySubjectIdDto } from '../class/dtos';
 
 @ApiTags('Subject')
 @Controller('subject')
@@ -75,5 +77,15 @@ export class SubjectController {
 	@Delete(':id')
 	async deleteSubject(@Param('id') id: string): Promise<CommandBus> {
 		return this.commandBus.execute(new DeleteSubjectCommand(id));
+	}
+
+	@Post(':subjectId/class')
+	async createClassBySubjectId(
+		@Param('subjectId') subjectId: string,
+		@Body() createClassBySubjectIdData: CreateClassBySubjectIdDto,
+	): Promise<any> {
+		return this.commandBus.execute(
+			new CreatClassBySubjectIdCommand(subjectId, createClassBySubjectIdData),
+		);
 	}
 }

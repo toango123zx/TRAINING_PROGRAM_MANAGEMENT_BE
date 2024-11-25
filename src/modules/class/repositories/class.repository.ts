@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
+import { ClassEntity, CreateClassDto } from 'src/models';
 import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
@@ -51,6 +52,26 @@ export class ClassRepository {
 				include: { user: true },
 			});
 			return infos.map((info) => new SafeUserDto(info.user));
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	async getClassById(id: string): Promise<ClassEntity> {
+		try {
+			return await this.prisma.class.findUnique({
+				where: { id_class: id },
+			});
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	async createClassBySubjectId(classData: CreateClassDto): Promise<ClassEntity> {
+		try {
+			return await this.prisma.class.create({
+				data: classData
+			});
 		} catch (err) {
 			throw err;
 		}

@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { SafeUserDto } from 'src/common/dtos/safe-user.dto';
+import { ClassEntity, CreateClassDto } from 'src/models';
 import { PrismaService } from 'src/modules/database/services';
 
 @Injectable()
@@ -125,6 +126,26 @@ export class ClassRepository {
 				data: { current_quantity: _class.current_quantity - 1 },
 			});
 			return { success: true, message: 'Cancel completed' };
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	async getClassById(id: string): Promise<ClassEntity> {
+		try {
+			return await this.prisma.class.findUnique({
+				where: { id_class: id },
+			});
+		} catch (err) {
+			throw err;
+		}
+	}
+
+	async createClassBySubjectId(classData: CreateClassDto): Promise<ClassEntity> {
+		try {
+			return await this.prisma.class.create({
+				data: classData
+			});
 		} catch (err) {
 			throw err;
 		}

@@ -90,7 +90,7 @@ export class StudentRepository {
 		return await this.prisma.user.update({ where: { id_user: id }, data });
 	}
 
-	async getAssignableClasses(id: string, all: boolean = false) {
+	async getAssignableSubjects(id: string, all: boolean = false) {
 		const student = await this.prisma.user.findFirst({
 			where: {
 				id_user: id,

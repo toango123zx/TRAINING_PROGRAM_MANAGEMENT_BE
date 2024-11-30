@@ -119,4 +119,21 @@ export class SubjectRepository {
 			throw error;
 		}
 	}
+
+	async getClassBySubjectId(id: string) {
+		try {
+			return await this.prismaService.class.findMany({
+				where: {
+					id_subject: id,
+					status: 'activate',
+				},
+				include: {
+					subject: true,
+					lecturer: true,
+				},
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
 }

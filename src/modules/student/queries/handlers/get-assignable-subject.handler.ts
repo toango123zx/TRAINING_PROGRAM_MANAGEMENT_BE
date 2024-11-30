@@ -9,6 +9,6 @@ export class GetAssignableSubjectsHandler
 	constructor(private readonly studentRepository: StudentRepository) {}
 
 	async execute(query: GetAssignableSubjectsQuery): Promise<any> {
-		return this.studentRepository.getAssignableClasses(query.id, query.dto.all);
+		return this.studentRepository.getAssignableSubjects(query.id, query.dto.all);
 	}
 }

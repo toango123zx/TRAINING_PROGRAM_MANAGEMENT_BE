@@ -1,8 +1,10 @@
 import {
+	Body,
 	Controller,
 	Delete,
 	Get,
 	Param,
+	Patch,
 	Post,
 	Query,
 	Request,
@@ -11,11 +13,17 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard, RoleGuard } from 'src/shared/guards';
-import { GetAllClassQuery, GetStudentsByClassIdQuery } from './queries/implements';
+import {
+	GetAllClassQuery,
+	GetClassById,
+	GetStudentsByClassIdQuery,
+} from './queries/implements';
 import { GetAllClassDto } from './dto';
 import { Role } from 'src/common/enums';
 import { Authorize } from 'src/common/decorators';
 import { CancelEnrollCommand, EnrollClassCommand } from './commands/implements';
+import { UpdateClassRequsestDto } from './dtos';
+import { UpdateClassCommand } from './commands/implements';
 
 @ApiTags('Classes')
 @Controller('class')
@@ -56,6 +64,17 @@ export class ClassController {
 	async cancelEnrollClass(@Request() request: any, @Param('id') id_class: string) {
 		return this.commandBus.execute(
 			new CancelEnrollCommand(request.user.id_user, id_class),
+		);
+	}
+
+	@Patch(':classId')
+	@ApiBearerAuth()
+	async updateClass(
+		@Param('classId') classId: string,
+		@Body() updateClassData: UpdateClassRequsestDto,
+	) {
+		return this.commandBus.execute(
+			new UpdateClassCommand(classId, updateClassData),
 		);
 	}
 }

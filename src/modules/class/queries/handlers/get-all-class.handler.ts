@@ -7,12 +7,13 @@ export class GetAllClassHandler implements IQueryHandler<GetAllClassQuery> {
 	constructor(private readonly classRepository: ClassRepository) {}
 
 	async execute(query: GetAllClassQuery): Promise<any> {
-		const skip = (query.pagination.page - 1) * query.pagination.limit;
+		const skip = (query.dto.page - 1) * query.dto.limit;
 		const [classes, totalRecords] = await this.classRepository.getAllClass(
 			skip,
-			query.pagination.limit,
+			query.dto.limit,
+			query.dto.name,
 		);
-		const totalPage = Math.ceil(totalRecords / query.pagination.limit);
+		const totalPage = Math.ceil(totalRecords / query.dto.limit);
 		return { data: classes, totalPage };
 	}
 }

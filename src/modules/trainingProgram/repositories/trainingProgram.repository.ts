@@ -21,7 +21,10 @@ export class TrainingProgramRepository {
 				this.prismaService.training_Program.findMany({
 					where: {
 						status: 'activate',
-						name: { contains: name.toLowerCase(), mode: 'insensitive' },
+						name: {
+							contains: name.trim().toLowerCase(),
+							mode: 'insensitive',
+						},
 					},
 					skip: skip,
 					take: take,
@@ -32,7 +35,10 @@ export class TrainingProgramRepository {
 				this.prismaService.training_Program.count({
 					where: {
 						status: 'activate',
-						name: { contains: name.toLowerCase(), mode: 'insensitive' },
+						name: {
+							contains: name.trim().toLowerCase(),
+							mode: 'insensitive',
+						},
 					},
 				}),
 			]);

@@ -169,4 +169,32 @@ export class ClassRepository {
 			throw err;
 		}
 	}
+
+	async deleteClassById(classId: string): Promise<any> {
+		try {
+			return await this.prisma.class.update({
+				where: {
+					id_class: classId,
+					status: 'activate',
+				},
+				data: {
+					delete_at: new Date(),
+					status: 'cancel',
+					infoClasses: {
+						updateMany: {
+							where: {
+								id_class: classId,
+							},
+							data: {
+								delete_at: new Date(),
+								status: 'rejected',
+							},
+						},
+					},
+				},
+			});
+		} catch (err) {
+			throw err;
+		}
+	}
 }

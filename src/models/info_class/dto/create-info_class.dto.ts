@@ -1,5 +1,10 @@
 import { ApiExtraModels, ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, ValidateNested } from 'class-validator';
+import {
+	IsDateString,
+	IsNotEmpty,
+	IsOptional,
+	ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { ConnectUserDto } from '../../user/dto/connect-user.dto';
 import { ConnectClassDto } from '../../class/dto/connect-class.dto';
@@ -44,4 +49,13 @@ export class CreateInfoClassDto {
 	@ValidateNested()
 	@Type(() => CreateInfoClassClassRelationInputDto)
 	class: CreateInfoClassClassRelationInputDto;
+	@ApiProperty({
+		type: 'string',
+		format: 'date-time',
+		required: false,
+		nullable: true,
+	})
+	@IsOptional()
+	@IsDateString()
+	delete_at?: Date | null;
 }

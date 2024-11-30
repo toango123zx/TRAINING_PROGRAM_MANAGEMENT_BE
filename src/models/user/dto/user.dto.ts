@@ -56,4 +56,9 @@ export class UserDto {
 		enum: User_Status,
 	})
 	status: User_Status;
+	@ApiProperty({
+		type: 'integer',
+		format: 'int32',
+	})
+	current_semester: number;
 }

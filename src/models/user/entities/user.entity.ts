@@ -81,6 +81,11 @@ export class UserEntity {
 	})
 	status: User_Status;
 	@ApiProperty({
+		type: 'integer',
+		format: 'int32',
+	})
+	current_semester: number;
+	@ApiProperty({
 		type: () => LecturerEntity,
 		required: false,
 		nullable: true,

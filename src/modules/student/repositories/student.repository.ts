@@ -89,4 +89,24 @@ export class StudentRepository {
 		);
 		return await this.prisma.user.update({ where: { id_user: id }, data });
 	}
+
+	async getAssignableClasses(id: string, all: boolean = false) {
+		const student = await this.prisma.user.findFirst({
+			where: {
+				id_user: id,
+			},
+		});
+		const assignableSubjects = await this.prisma.info_Subject.findMany({
+			where: {
+				id_training_program: student.id_program,
+				semester: all
+					? { lte: student.current_semester }
+					: student.current_semester,
+			},
+			include: {
+				subject: true,
+			},
+		});
+		return assignableSubjects;
+	}
 }

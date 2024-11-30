@@ -18,6 +18,7 @@ import {
 	GetSubjectByIdQuery,
 	GetSubjectsQuery,
 	GetSubjectsByNameQuery,
+	GetClassBySubjectIdQuery,
 } from './queries/implements';
 import {
 	CreateSubjectCommand,
@@ -49,6 +50,11 @@ export class SubjectController {
 	@Get(':id')
 	async findSubjectById(@Param('id') id: string): Promise<QueryBus> {
 		return this.queryBus.execute(new GetSubjectByIdQuery(id));
+	}
+
+	@Get(':subjectId/class')
+	async getClassesBySubjectId(@Param('subjectId') id: string): Promise<QueryBus> {
+		return this.queryBus.execute(new GetClassBySubjectIdQuery(id));
 	}
 
 	@Post()

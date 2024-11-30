@@ -34,6 +34,13 @@ export class ClassController {
 		return this.queryBus.execute(new GetAllClassQuery(dto));
 	}
 
+	@Get('/:classId')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard)
+	async getClassById(@Param('classId') classId: string) {
+		return this.queryBus.execute(new GetClassById(classId));
+	}
+
 	@Get('/:id/students')
 	@ApiBearerAuth()
 	@UseGuards(AuthGuard)

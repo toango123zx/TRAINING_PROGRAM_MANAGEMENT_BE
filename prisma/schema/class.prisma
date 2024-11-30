@@ -37,5 +37,8 @@ model Info_Class {
     id_class      String
     /// @DtoRelationCanConnectOnCreate
     class         Class             @relation(fields: [id_class], references: [id_class])
+    create_at     DateTime          @default(now())
+    update_at     DateTime          @updatedAt
+    delete_at     DateTime?         @db.Date()
     status        Info_Class_Status @default(accepted)
 }

@@ -1,6 +1,7 @@
 import {
 	Body,
 	Controller,
+	Delete,
 	Get,
 	Param,
 	Patch,
@@ -9,7 +10,12 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from 'src/shared/guards';
+
+import { AuthGuard, RoleGuard } from 'src/shared/guards';
+import { Authorize } from 'src/common/decorators';
+
+import { Role } from 'src/common/enums';
+
 import {
 	GetAllClassQuery,
 	GetClassById,
@@ -17,7 +23,7 @@ import {
 } from './queries/implements';
 import { GetAllClassDto } from './dto';
 import { UpdateClassRequsestDto } from './dtos';
-import { UpdateClassCommand } from './commands/implements';
+import { DeleteClassByIdCommand, UpdateClassCommand } from './commands/implements';
 
 @ApiTags('Classes')
 @Controller('class')
@@ -50,6 +56,8 @@ export class ClassController {
 
 	@Patch(':classId')
 	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
 	async updateClass(
 		@Param('classId') classId: string,
 		@Body() updateClassData: UpdateClassRequsestDto,
@@ -57,5 +65,13 @@ export class ClassController {
 		return this.commandBus.execute(
 			new UpdateClassCommand(classId, updateClassData),
 		);
+	}
+
+	@Delete(':classId')
+	@ApiBearerAuth()
+	@UseGuards(AuthGuard, RoleGuard)
+	@Authorize(Role.Admin)
+	async deleteClassById(@Param('classId') classId: string) {
+		return this.commandBus.execute(new DeleteClassByIdCommand(classId));
 	}
 }

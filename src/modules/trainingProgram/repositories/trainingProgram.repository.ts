@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 
 import {
 	CreateTrainingProgramDto,
@@ -74,6 +74,15 @@ export class TrainingProgramRepository {
 		trainingProgramData: CreateTrainingProgramDto,
 	): Promise<TrainingProgramEntity> {
 		try {
+			const school_year = parseInt(trainingProgramData.school_year);
+			if (
+				school_year <=
+					new Date().getFullYear() -
+						trainingProgramData.number_semester / 2 +
+						1 ||
+				school_year > new Date().getFullYear()
+			)
+				throw new BadRequestException('School year not suitable');
 			return await this.prismaService.training_Program.create({
 				data: trainingProgramData,
 			});

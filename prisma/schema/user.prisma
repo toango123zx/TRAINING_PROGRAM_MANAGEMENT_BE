@@ -5,30 +5,31 @@ enum User_Status {
 }
 
 model User {
-    id_user       String            @id @default(uuid())
+    id_user          String            @id @default(uuid())
     /// @DtoUpdateHidden
-    username      String            @unique @db.VarChar(100)
+    username         String            @unique @db.VarChar(100)
     /// @DtoUpdateHidden
-    password      String            @db.Char(128)
-    name          String            @db.VarChar(100)
-    email         String            @unique @db.VarChar(100)
-    gender        Boolean
-    date_of_birth DateTime          @db.Date()
-    phone_number  String            @db.Char(10)
-    address       String            @db.Text
+    password         String            @db.Char(128)
+    name             String            @db.VarChar(100)
+    email            String            @unique @db.VarChar(100)
+    gender           Boolean
+    date_of_birth    DateTime          @db.Date()
+    phone_number     String            @db.Char(10)
+    address          String            @db.Text
     /// @DtoUpdateHidden
-    photo_url     String            @default("https://res.cloudinary.com/dfyjlzwu5/image/upload/default_riu36r.png")
-    create_at     DateTime          @default(now())
+    photo_url        String            @default("https://res.cloudinary.com/dfyjlzwu5/image/upload/default_riu36r.png")
+    create_at        DateTime          @default(now())
     /// @DtoUpdateHidden
-    salt          String            @db.Char(32)
-    id_role       String
-    id_program    String?
+    salt             String            @db.Char(32)
+    id_role          String
+    id_program       String?
     /// @DtoRelationCanConnectOnCreate
     /// @DtoRelationCanConnectOnUpdate
     /// @DtoUpdateHidden
-    role          Role              @relation(fields: [id_role], references: [id_role])
-    program       Training_Program? @relation(fields: [id_program], references: [id_training_program])
-    status        User_Status       @default(activate)
+    role             Role              @relation(fields: [id_role], references: [id_role])
+    program          Training_Program? @relation(fields: [id_program], references: [id_training_program])
+    status           User_Status       @default(activate)
+    current_semester Int               @default(1)
 
     /// @DtoRelationCanCreateOnCreate
     /// @DtoUpdateRequired

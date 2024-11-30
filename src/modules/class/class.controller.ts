@@ -1,9 +1,23 @@
-import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	Patch,
+	Query,
+	UseGuards,
+} from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from 'src/shared/guards';
-import { GetAllClassQuery, GetStudentsByClassIdQuery } from './queries/implements';
+import {
+	GetAllClassQuery,
+	GetClassById,
+	GetStudentsByClassIdQuery,
+} from './queries/implements';
 import { GetAllClassDto } from './dto';
+import { UpdateClassRequsestDto } from './dtos';
+import { UpdateClassCommand } from './commands/implements';
 
 @ApiTags('Classes')
 @Controller('class')
@@ -25,5 +39,16 @@ export class ClassController {
 	@UseGuards(AuthGuard)
 	async getStudentByClassId(@Param('id') id: string) {
 		return this.queryBus.execute(new GetStudentsByClassIdQuery(id));
+	}
+
+	@Patch(':classId')
+	@ApiBearerAuth()
+	async updateClass(
+		@Param('classId') classId: string,
+		@Body() updateClassData: UpdateClassRequsestDto,
+	) {
+		return this.commandBus.execute(
+			new UpdateClassCommand(classId, updateClassData),
+		);
 	}
 }

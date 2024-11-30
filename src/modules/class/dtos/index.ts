@@ -1,1 +1,2 @@
-export * from './createClassBySubjectId.dto'
+export * from './request';
+export * from './createClassBySubjectId.dto';

@@ -3,6 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { SubjectEntity } from '../../subject/entities/subject.entity';
 import { InfoClassEntity } from '../../info_class/entities/info_class.entity';
 import { LecturerEntity } from '../../lecturer/entities/lecturer.entity';
+import { ScheduleEntity } from '../../schedule/entities/schedule.entity';
 
 export class ClassEntity {
 	@ApiProperty({
@@ -67,4 +68,10 @@ export class ClassEntity {
 		enum: Class_Status,
 	})
 	status: Class_Status;
+	@ApiProperty({
+		type: () => ScheduleEntity,
+		isArray: true,
+		required: false,
+	})
+	Schedule?: ScheduleEntity[];
 }

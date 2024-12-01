@@ -9,6 +9,21 @@ enum Info_Class_Status {
     rejected
 }
 
+enum Weekday {
+    Monday
+    Tuesday
+    Wednesday
+    Thursday
+    Friday
+    Saturday
+    Sunday
+}
+
+enum Schedule_Status {
+    activate
+    cancel
+}
+
 model Class {
     id_class         String       @id @default(uuid())
     name             String
@@ -27,6 +42,7 @@ model Class {
     /// @DtoRelationCanConnectOnUpdate
     lecturer         Lecturer     @relation(fields: [id_lecturer], references: [id_lecturer])
     status           Class_Status @default(activate)
+    Schedule         Schedule[]
 }
 
 model Info_Class {
@@ -41,4 +57,30 @@ model Info_Class {
     update_at     DateTime          @updatedAt
     delete_at     DateTime?         @db.Date()
     status        Info_Class_Status @default(accepted)
+}
+
+model Schedule {
+    id_schedule   String          @id @default(uuid())
+    id_class      String
+    /// @DtoRelationCanConnectOnCreate
+    /// @DtoUpdateHidden
+    class         Class           @relation(fields: [id_class], references: [id_class])
+    /// @minimum 2
+    /// @maximum 8
+    weekday       Weekday
+    /// @minimum 1
+    /// @maximum 14
+    start_lession Int             @db.SmallInt
+    /// @minimum 1
+    /// @maximum 14
+    end_lession   Int             @db.SmallInt
+    /// @DtoCreateHidden
+    /// @DtoUpdateHidden
+    create_at     DateTime        @default(now())
+    /// @DtoCreateHidden
+    /// @DtoUpdateHidden
+    update_at     DateTime        @updatedAt
+    /// @DtoCreateHidden
+    delete_at     DateTime?       @db.Date()
+    status        Schedule_Status @default(activate)
 }

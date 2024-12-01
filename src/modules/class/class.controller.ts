@@ -24,8 +24,6 @@ import {
 	GetStudentsByClassIdQuery,
 } from './queries/implements';
 import { GetAllClassDto } from './dto';
-import { Role } from 'src/common/enums';
-import { Authorize } from 'src/common/decorators';
 import { CancelEnrollCommand, EnrollClassCommand } from './commands/implements';
 import { UpdateClassRequsestDto } from './dtos';
 import { DeleteClassByIdCommand, UpdateClassCommand } from './commands/implements';

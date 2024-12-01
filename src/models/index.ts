@@ -8,6 +8,8 @@ export * from './lecturer/dto';
 export * from './lecturer/entities';
 export * from './role/dto';
 export * from './role/entities';
+export * from './schedule/dto';
+export * from './schedule/entities';
 export * from './subject/dto';
 export * from './subject/entities';
 export * from './training_program/dto';

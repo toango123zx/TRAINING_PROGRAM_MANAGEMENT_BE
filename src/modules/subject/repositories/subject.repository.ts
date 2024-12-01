@@ -38,6 +38,9 @@ export class SubjectRepository {
 	async findById(subjectId: string): Promise<SubjectEntity | null> {
 		try {
 			return await this.prismaService.subject.findFirst({
+				include: {
+					classes: true,
+				},
 				where: {
 					id_subject: subjectId,
 					status: 'activate',
@@ -109,9 +112,11 @@ export class SubjectRepository {
 		try {
 			return await this.prismaService.subject.update({
 				where: {
+					status: 'activate',
 					id_subject: id,
 				},
 				data: {
+					delete_at: new Date(),
 					status: 'cancel',
 				},
 			});

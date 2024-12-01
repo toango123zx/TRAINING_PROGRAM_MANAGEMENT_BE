@@ -118,6 +118,19 @@ export class TrainingProgramRepository {
 				data: {
 					delete_at: new Date(),
 					status: 'cancel',
+					infoSubjects: {
+						updateMany: {
+							where: {
+								status: 'activate',
+							},
+							data: {
+								delete_at: new Date(),
+								status: 'cancel',
+								
+								
+							},
+						},
+					},
 				},
 			});
 		} catch (error) {

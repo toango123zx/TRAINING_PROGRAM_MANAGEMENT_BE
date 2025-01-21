@@ -3,4 +3,9 @@ import { EnrollClassHandler } from './enroll-class.handler';
 import { UpdateClassHandler } from './updateClass.handler';
 import { deleteClassByIdHandler } from './deleteClassById.handler';
 
-export const CommandHandlers = [EnrollClassHandler, CancelEnrollHandler, UpdateClassHandler, deleteClassByIdHandler];
+export const CommandHandlers = [
+	EnrollClassHandler,
+	CancelEnrollHandler,
+	UpdateClassHandler,
+	deleteClassByIdHandler,
+];

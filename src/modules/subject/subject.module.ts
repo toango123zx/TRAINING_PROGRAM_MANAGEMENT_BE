@@ -14,7 +14,13 @@ import { ClassRepository } from '../class/repositories/class.repository';
 @Module({
 	imports: [CqrsModule, DatabaseModule],
 	controllers: [SubjectController],
-	providers: [...QueryHandlers, ...CommandHandlers, SubjectRepository, LecturerRepository, ClassRepository],
+	providers: [
+		...QueryHandlers,
+		...CommandHandlers,
+		SubjectRepository,
+		LecturerRepository,
+		ClassRepository,
+	],
 	exports: [SubjectRepository],
 })
 export class SubjectModule {}

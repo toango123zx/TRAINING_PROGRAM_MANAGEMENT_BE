@@ -126,8 +126,6 @@ export class TrainingProgramRepository {
 							data: {
 								delete_at: new Date(),
 								status: 'cancel',
-								
-								
 							},
 						},
 					},
